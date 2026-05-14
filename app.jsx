@@ -60,9 +60,9 @@ function Nav() {
           <span>natalie.kreatywnie</span>
         </a>
         <nav className="nav__links" aria-label="Sekcje">
-          <a href="#instagram">[ 02 ] z instagrama</a>
-          <a href="#o-mnie">[ 03 ] o mnie</a>
-          <a href="#kontakt">[ 04 ] kontakt</a>
+          <a href="#instagram">tutoriale</a>
+          <a href="#o-mnie">o mnie</a>
+          <a href="#kontakt">kontakt</a>
         </nav>
         <a className="nav__cta" href="#kontakt">
           napisz
@@ -93,9 +93,9 @@ function Hero({ tweaks }) {
         <div className="hero__grid">
           <div>
             <div className="hero__label">
-              <span className="tag">[ 01 / hero ]</span>
+              <span className="tag">Cześć!</span>
               <span className="ast">*</span>
-              <span className="mono" style={{ fontSize: 11 }}>natalie.kreatywnie ● kraków, pl</span>
+              <span className="mono" style={{ fontSize: 11 }}>natalie.kreatywnie ● Opole</span>
             </div>
 
             <h1 className="h-display hero__h1">
@@ -115,7 +115,7 @@ function Hero({ tweaks }) {
                 Zobacz, co robię
                 <span className="arrow"><Icon.ArrowDown style={{ width: 14, height: 14 }} /></span>
               </a>
-              <span className="hero__meta">scroll → [ 02 ]</span>
+              <span className="hero__meta">Zobacz moje tutoriale</span>
             </div>
           </div>
 
@@ -124,7 +124,7 @@ function Hero({ tweaks }) {
 
             <span className="hero__chip --tl">
               <span className="dot"></span>
-              między promptem a&nbsp;enterem
+              między grafiką a AI
             </span>
 
             <div className="frame">
@@ -132,7 +132,7 @@ function Hero({ tweaks }) {
             </div>
 
             <span className="hero__chip --br">
-              ● {photo.label}
+              ● Grafika x AI dla twórców
             </span>
           </div>
         </div>
@@ -154,12 +154,12 @@ const IG_EMBEDS = [
   "https://www.instagram.com/p/DYUmyVCspnK/",
   "https://www.instagram.com/p/DXgLatCjBO7/",
   "https://www.instagram.com/p/DXegXYoDNQg/",
-  "", // slot 04 — wklej tu link do kolejnego posta
-  "", // slot 05
-  "", // slot 06
-  "", // slot 07
-  "", // slot 08
-  "", // slot 09
+  "https://www.instagram.com/natalie.kreatywnie/reel/DXonS4ajCqA/", 
+  "https://www.instagram.com/natalie.kreatywnie/reel/DXtvLqajNsp/", 
+  "https://www.instagram.com/natalie.kreatywnie/reel/DXjaGvZjMkz/",
+  "https://www.instagram.com/natalie.kreatywnie/reel/DXjGOBngLTo/",
+  "https://www.instagram.com/natalie.kreatywnie/reel/DXg1SvuDPta/",
+  "https://www.instagram.com/natalie.kreatywnie/reel/DYOxosmA9VX/", 
   "", // slot 10
   "", // slot 11
   "", // slot 12
@@ -198,13 +198,14 @@ function InstagramSection() {
         <div className="section__head">
           <div className="section__head-row">
             <div>
-              <span className="mono">[ 02 / z instagrama ]</span>
+              <span className="mono">z instagrama</span>
               <h2 className="h-section">
                 Najnowsze z <span className="italic">@natalie.kreatywnie</span>
               </h2>
             </div>
             <span className="section__head-meta">
-              {activePosts.length} {activePosts.length === 1 ? "post" : "posty"} ● prosto z instagrama
+              /* {activePosts.length} {activePosts.length === 1 ? "post" : "posty"}  */
+              ● prosto z instagrama
             </span>
           </div>
         </div>
@@ -250,10 +251,10 @@ function AboutSection({ tweaks }) {
       <div className="wrap">
         <div className="about__grid">
           <div>
-            <span className="mono">[ 03 / o mnie ]</span>
+            <span className="mono">o mnie</span>
             <h2 className="h-section">
-              Między promptem {useItalic
-                ? <span className="italic">a enterem</span>
+              Między grafiką {useItalic
+                ? <span className="italic">a AI</span>
                 : <span>a enterem</span>}
             </h2>
 
@@ -269,7 +270,7 @@ function AboutSection({ tweaks }) {
             <ol className="about__list">
               <li>
                 <span className="num">01</span>
-                <span>Jak stworzyć grafiki reklamowe we wszystkich formatach w&nbsp;Gemini z&nbsp;JSON.</span>
+                <span>Jak połączyć Claude z Affinity, Adobe i Figmą.</span>
               </li>
               <li>
                 <span className="num">02</span>
@@ -340,7 +341,7 @@ const CONTACT = [
     platform: "LinkedIn",
     handle: "Natalia Przybylska",
     desc: "Długie wpisy, projekty, refleksje.",
-    cta: "Połącz się",
+    cta: "Zobacz profil",
     href: "https://linkedin.com/in/natalia-przybylska",
     icon: <Icon.LinkedIn />,
   },
@@ -362,12 +363,12 @@ function ContactSection({ tweaks }) {
         <div className="section__head">
           <div className="section__head-row">
             <div>
-              <span className="mono">[ 04 / kontakt ]</span>
+              <span className="mono">kontakt</span>
               <h2 className="h-section">
                 Tu mnie {useItalic ? <span className="italic">znajdziesz</span> : "znajdziesz"}.
               </h2>
             </div>
-            <span className="section__head-meta">zostań ze mną ● odpowiadam w ~48h</span>
+            <span className="section__head-meta">masz pytania? ● porozmawiajmy</span>
           </div>
         </div>
 
