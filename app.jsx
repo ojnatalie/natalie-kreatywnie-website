@@ -342,7 +342,7 @@ const CONTACT = [
     handle: "Natalia Przybylska",
     desc: "Długie wpisy, projekty, refleksje.",
     cta: "Zobacz profil",
-    href: "https://linkedin.com/in/natalia-przybylska",
+    href: "https://www.linkedin.com/in/nat-przybylska/",
     icon: <Icon.LinkedIn />,
   },
   {
