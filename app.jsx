@@ -424,7 +424,7 @@ const CONTACT = [
   {
     platform: "E-mail",
     handle: "natalie.kreatywnie@gmail.com",
-    desc: "Współpraca, projekt, pytanie konkretne.",
+    desc: "Współpraca, projekt, pytania.",
     cta: "Napisz",
     href: "mailto:natalie.kreatywnie@gmail.com",
     icon: <Icon.Mail />,
