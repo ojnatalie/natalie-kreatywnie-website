@@ -271,14 +271,14 @@ function PromptTeaserSection({ tweaks }) {
               <span className="mono">narzędzia · prompty</span>
               <h2 className="h-section">
                 {useItalic
-                  ? <><span className="italic">Prompt</span> do brandingu AI</>
+                  ? <><span className="italic">Stwórz</span>koncept marki z AI</>
                   : "Prompt do brandingu AI"}
               </h2>
             </div>
-            <span className="section__head-meta">system świata marki ● 11 sekcji</span>
+            <span className="section__head-meta">branding ● koncept marki z AI</span>
           </div>
           <p className="prompt-teaser__desc">
-            Wklej adres strony — AI przeanalizuje markę i zbuduje kompletną planszę brandingową.
+            Oto prompt dzięki któremu stworzysz koncept marki. Wklej link do strony www, a AI przeanalizuje markę i zbuduje kompletną planszę brandingową.
             Poniżej kilka przykładów tego, co można uzyskać.
           </p>
         </div>
@@ -304,7 +304,6 @@ function PromptTeaserSection({ tweaks }) {
         <div className="prompt-teaser__cta-row">
           <div className="prompt-teaser__pill-group">
             <span className="pill"><span className="dot"></span>gotowy do skopiowania</span>
-            <span className="pill"><span className="dot"></span>sekcje A–K</span>
             <span className="pill"><span className="dot"></span>format 1080×1350 px</span>
           </div>
           <a className="cta" href="prompt.html">
