@@ -210,7 +210,6 @@ function InstagramSection() {
               </h2>
             </div>
             <span className="section__head-meta">
-              /* {activePosts.length} {activePosts.length === 1 ? "post" : "posty"}  */
               ● prosto z instagrama
             </span>
           </div>
