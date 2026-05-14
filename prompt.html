@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prompt kierownictwa kreatywnego AI — natalie.kreatywnie</title>
+  <meta name="description" content="Gotowy prompt do generowania kompletnych systemów identyfikacji wizualnej marki za pomocą AI. Autorstwa Natalii Przybylskiej @natalie.kreatywnie" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* ============================================================
+       natalie.kreatywnie — prompt subpage
+       ============================================================ */
+
+    :root {
+      --bg: #FAFAFA;
+      --ink: #0A0A0A;
+      --ink-2: #1A1A1A;
+      --muted: #6B6B6B;
+      --muted-2: #9A9A9A;
+      --line: #E6E6E6;
+      --line-strong: #0A0A0A;
+
+      --lime: #51F500;
+      --lime-tint: #F0FCE0;
+      --lime-tint-2: #EBF9D6;
+      --marker: #FFE600;
+
+      --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
+      --shadow-lift: 0 12px 24px rgba(0, 0, 0, 0.08);
+      --shadow-card-hover: 0 18px 36px rgba(0, 0, 0, 0.10);
+
+      --f-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+      --f-mono: "DM Mono", ui-monospace, "JetBrains Mono", Menlo, monospace;
+      --f-serif: "Instrument Serif", "Times New Roman", serif;
+
+      --r-card: 16px;
+      --r-pill: 999px;
+
+      --maxw: 1240px;
+      --pad: clamp(20px, 4vw, 56px);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--f-sans);
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.55;
+      letter-spacing: -0.005em;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+
+    ::selection { background: var(--lime); color: var(--ink); }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: var(--pad);
+    }
+
+    .section {
+      padding-block: clamp(60px, 9vw, 112px);
+      position: relative;
+    }
+
+    /* --- Nav --- */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(140%) blur(12px);
+      -webkit-backdrop-filter: saturate(140%) blur(12px);
+      background: rgba(250, 250, 250, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-block: 18px;
+    }
+    .nav__brand {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--f-sans);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      font-size: 16px;
+    }
+    .nav__brand .glyph {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: var(--lime);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--f-serif); font-style: italic;
+      font-size: 20px; color: var(--ink);
+      box-shadow: 0 0 0 2px #fff inset, 0 4px 14px rgba(81,245,0,0.35);
+    }
+    .nav__back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--f-mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: lowercase;
+      color: var(--muted);
+      transition: color .2s ease;
+    }
+    .nav__back:hover { color: var(--ink); }
+    .nav__back svg { transition: transform .25s ease; }
+    .nav__back:hover svg { transform: translateX(-3px); }
+
+    /* --- Hero / header --- */
+    .page-hero {
+      padding-top: clamp(48px, 7vw, 96px);
+      padding-bottom: clamp(48px, 6vw, 80px);
+      border-bottom: 1px solid var(--line);
+    }
+    .page-hero__eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--f-mono); font-size: 12px;
+      letter-spacing: 0.08em; text-transform: lowercase;
+      color: var(--muted); margin-bottom: 20px;
+    }
+    .page-hero__eyebrow .dot {
+      width: 6px; height: 6px; border-radius: 999px; background: var(--lime);
+    }
+    .page-hero__title {
+      font-family: var(--f-sans); font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.02;
+      font-size: clamp(38px, 6.5vw, 80px);
+      margin: 0 0 20px; color: var(--ink);
+      text-wrap: balance;
+    }
+    .page-hero__title .italic {
+      font-family: var(--f-serif); font-weight: 400; font-style: italic;
+      letter-spacing: -0.015em;
+    }
+    .page-hero__sub {
+      font-size: clamp(17px, 1.6vw, 20px);
+      color: var(--muted); max-width: 60ch; margin: 0;
+      line-height: 1.6;
+    }
+
+    /* --- Author note card --- */
+    .author-note {
+      margin: clamp(40px, 5vw, 64px) 0 0;
+    }
+    .author-note__card {
+      display: flex; align-items: flex-start; gap: 20px;
+      background: #fff;
+      border: 1.5px solid var(--ink);
+      border-radius: var(--r-card);
+      padding: 28px 32px;
+      position: relative;
+      overflow: hidden;
+      max-width: 780px;
+    }
+    .author-note__card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--lime);
+    }
+    .author-note__avatar {
+      flex-shrink: 0;
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: var(--lime);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--f-serif); font-style: italic;
+      font-size: 26px; color: var(--ink);
+      font-weight: 400;
+      box-shadow: 0 4px 14px rgba(81,245,0,0.3);
+    }
+    .author-note__body { flex: 1; min-width: 0; }
+    .author-note__label {
+      font-family: var(--f-mono); font-size: 11px;
+      letter-spacing: 0.1em; text-transform: lowercase;
+      color: var(--muted); margin-bottom: 8px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .author-note__label::after {
+      content: "";
+      flex: 1; height: 1px; background: var(--line);
+    }
+    .author-note__text {
+      font-size: 16px; color: var(--ink-2);
+      line-height: 1.6; margin: 0 0 14px;
+    }
+    .author-note__sig {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--f-mono); font-size: 12px;
+      letter-spacing: 0.04em; color: var(--muted);
+    }
+    .author-note__sig a {
+      color: var(--ink); font-weight: 500;
+      border-bottom: 1.5px solid var(--lime);
+      transition: color .2s;
+    }
+    .author-note__sig a:hover { color: var(--lime); }
+    .author-note__sig .sep { color: var(--line); }
+
+    /* --- Gallery --- */
+    .gallery { padding-block: clamp(48px, 6vw, 80px); }
+    .gallery__label {
+      font-family: var(--f-mono); font-size: 12px;
+      letter-spacing: 0.08em; text-transform: lowercase;
+      color: var(--muted); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .gallery__label .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--lime); }
+    .gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(12px, 1.2vw, 16px);
+    }
+    @media (max-width: 900px) { .gallery__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .gallery__grid { grid-template-columns: 1fr; } }
+
+    .gallery__item {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      border-radius: var(--r-card);
+      overflow: hidden;
+      background: #ececec;
+      transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease;
+    }
+    .gallery__item:hover { transform: translateY(-5px) rotate(0.4deg); box-shadow: var(--shadow-card-hover); }
+    .gallery__item img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+      transition: transform .6s cubic-bezier(.2,.7,.2,1);
+    }
+    .gallery__item:hover img { transform: scale(1.04); }
+    .gallery__item .tag {
+      position: absolute; bottom: 12px; left: 12px;
+      font-family: var(--f-mono); font-size: 10px;
+      letter-spacing: 0.06em; text-transform: lowercase;
+      background: rgba(255,255,255,0.92);
+      border-radius: 999px; padding: 5px 10px;
+      color: var(--ink);
+    }
+
+    /* --- Divider --- */
+    .divider {
+      display: flex; align-items: center; gap: 16px;
+      font-family: var(--f-mono); font-size: 11px;
+      letter-spacing: 0.1em; text-transform: lowercase;
+      color: var(--muted-2); margin: 0;
+    }
+    .divider::before, .divider::after {
+      content: ""; flex: 1; height: 1px; background: var(--line);
+    }
+
+    /* --- Prompt section --- */
+    .prompt-section {
+      background: var(--bg);
+      padding-block: clamp(48px, 6vw, 80px);
+    }
+    .prompt-section__head {
+      margin-bottom: 36px;
+    }
+    .prompt-section__eyebrow {
+      font-family: var(--f-mono); font-size: 12px;
+      letter-spacing: 0.08em; text-transform: lowercase;
+      color: var(--muted); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .prompt-section__eyebrow .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--lime); }
+    .prompt-section__title {
+      font-family: var(--f-sans); font-weight: 800;
+      font-size: clamp(28px, 3.5vw, 44px);
+      letter-spacing: -0.02em; margin: 0 0 12px;
+    }
+    .prompt-section__title .italic {
+      font-family: var(--f-serif); font-weight: 400; font-style: italic;
+    }
+    .prompt-section__desc {
+      color: var(--muted); font-size: 16px; max-width: 60ch; margin: 0;
+    }
+
+    /* Copy button + container */
+    .prompt-wrapper {
+      position: relative;
+      background: #fff;
+      border: 1.5px solid var(--ink);
+      border-radius: var(--r-card);
+      overflow: hidden;
+    }
+    .prompt-toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--line);
+      background: var(--bg);
+    }
+    .prompt-toolbar__label {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--f-mono); font-size: 11px;
+      letter-spacing: 0.08em; text-transform: lowercase; color: var(--muted);
+    }
+    .prompt-toolbar__dots { display: flex; gap: 6px; }
+    .prompt-toolbar__dots span {
+      width: 10px; height: 10px; border-radius: 999px;
+      display: block;
+    }
+    .prompt-toolbar__dots .d1 { background: #FF5F57; }
+    .prompt-toolbar__dots .d2 { background: #FFBE2E; }
+    .prompt-toolbar__dots .d3 { background: #28C840; }
+
+    .btn-copy {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px;
+      background: var(--ink);
+      color: #fff;
+      border-radius: var(--r-pill);
+      font-family: var(--f-sans); font-weight: 600; font-size: 13px;
+      letter-spacing: -0.005em;
+      transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+      border: 1.5px solid var(--ink);
+      cursor: pointer;
+    }
+    .btn-copy:hover {
+      background: var(--lime);
+      color: var(--ink);
+      border-color: var(--lime);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(81,245,0,0.3);
+    }
+    .btn-copy.--copied {
+      background: var(--lime);
+      color: var(--ink);
+      border-color: var(--lime);
+    }
+    .btn-copy svg { width: 14px; height: 14px; }
+
+    .prompt-body {
+      padding: 28px 32px;
+      font-family: var(--f-mono);
+      font-size: 13.5px;
+      line-height: 1.75;
+      letter-spacing: 0.01em;
+      color: var(--ink-2);
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 680px;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+    .prompt-body::-webkit-scrollbar { width: 6px; }
+    .prompt-body::-webkit-scrollbar-track { background: transparent; }
+    .prompt-body::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
+    .prompt-body::-webkit-scrollbar-thumb:hover { background: var(--muted-2); }
+
+    /* Syntax highlighting for prompt */
+    .prompt-body .h1 { color: var(--ink); font-weight: 500; font-size: 14px; }
+    .prompt-body .comment { color: var(--muted-2); }
+    .prompt-body .keyword { color: #0A0A0A; font-weight: 500; }
+
+    .prompt-expand {
+      display: flex; align-items: center; justify-content: center;
+      padding: 14px;
+      border-top: 1px dashed var(--line);
+      background: var(--bg);
+    }
+    .btn-expand {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--f-mono); font-size: 11px;
+      letter-spacing: 0.06em; text-transform: lowercase;
+      color: var(--muted); cursor: pointer;
+      border: 0; background: none;
+      transition: color .2s ease;
+    }
+    .btn-expand:hover { color: var(--ink); }
+
+    /* --- How to use --- */
+    .how-to {
+      background: var(--lime-tint);
+      padding-block: clamp(48px, 6vw, 72px);
+      border-top: 1px solid rgba(10,10,10,0.08);
+    }
+    .how-to__title {
+      font-family: var(--f-sans); font-weight: 800;
+      font-size: clamp(24px, 3vw, 38px);
+      letter-spacing: -0.02em; margin: 0 0 36px;
+    }
+    .how-to__title .italic {
+      font-family: var(--f-serif); font-weight: 400; font-style: italic;
+    }
+    .how-to__steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(16px, 1.6vw, 24px);
+    }
+    @media (max-width: 760px) { .how-to__steps { grid-template-columns: 1fr; } }
+    .how-to__step {
+      background: #fff;
+      border: 1.5px solid rgba(10,10,10,0.12);
+      border-radius: var(--r-card);
+      padding: 28px 24px;
+      position: relative;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .how-to__step:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+    .how-to__step-num {
+      font-family: var(--f-sans); font-weight: 800;
+      font-size: 48px; line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--ink); opacity: 0.08;
+      position: absolute; top: 16px; right: 20px;
+    }
+    .how-to__step-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--lime);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; margin-bottom: 16px;
+    }
+    .how-to__step-title {
+      font-family: var(--f-sans); font-weight: 700;
+      font-size: 18px; letter-spacing: -0.01em;
+      margin: 0 0 8px; color: var(--ink);
+    }
+    .how-to__step-text {
+      font-size: 15px; color: var(--muted); line-height: 1.6; margin: 0;
+    }
+
+    /* --- Footer --- */
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 0;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+      font-family: var(--f-mono); font-size: 12px;
+      color: var(--muted); letter-spacing: 0.06em;
+    }
+    .footer a:hover { color: var(--ink); }
+    .footer__brand {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-weight: 500; color: var(--ink);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: var(--ink); color: #fff;
+      font-family: var(--f-mono); font-size: 12px;
+      letter-spacing: 0.06em; text-transform: lowercase;
+      padding: 12px 20px; border-radius: var(--r-pill);
+      display: flex; align-items: center; gap: 8px;
+      z-index: 200;
+      transition: transform .35s cubic-bezier(.2,.7,.2,1), opacity .35s ease;
+      opacity: 0; pointer-events: none;
+    }
+    .toast.is-visible { transform: translateX(-50%) translateY(0); opacity: 1; }
+    .toast .lime { color: var(--lime); }
+
+    @media (max-width: 640px) {
+      .prompt-body { padding: 20px 18px; font-size: 12.5px; }
+      .author-note__card { flex-direction: column; gap: 14px; padding: 22px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="wrap nav__inner">
+      <a href="/" class="nav__brand">
+        <span class="glyph">n</span>
+        natalie.kreatywnie
+      </a>
+      <a href="/" class="nav__back">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M8.5 2.5L4 7l4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        powrót do strony
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="page-hero section">
+    <div class="wrap">
+      <div class="page-hero__eyebrow">
+        <span class="dot"></span>
+        branding wybranej marki · prompt 
+      </div>
+      <h1 class="page-hero__title">
+        Prompt do uzyskania koncepcji<br>
+        <span class="italic">brandingu</span> AI
+      </h1>
+      <p class="page-hero__sub">
+        Kompleksowy prompt do generowania systemów identyfikacji wizualnej marki za pomocą AI. Wklej URL strony, wygeneruj gotową planszę brandingową.
+      </p>
+
+      <!-- Author note -->
+      <div class="author-note">
+        <div class="author-note__card">
+          <div class="author-note__avatar">n</div>
+          <div class="author-note__body">
+            <div class="author-note__label">notatka od autorki</div>
+            <p class="author-note__text">
+              Hej! Cieszę się, że chcesz przetestować ten prompt. Powodzenia w testach!
+            </p>
+            <div class="author-note__sig">
+              <span>~ Natalia</span>
+              <span class="sep">·</span>
+              <a href="https://www.instagram.com/natalie.kreatywnie/" target="_blank" rel="noopener">@natalie.kreatywnie</a>
+              <span class="sep">·</span>
+              <a href="https://www.instagram.com/natalie.kreatywnie/" target="_blank" rel="noopener">Instagram ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery">
+    <div class="wrap">
+      <div class="gallery__label">
+        <span class="dot"></span>
+        przykładowe wyniki · przykłady wygenerowanych konceptów
+      </div>
+      <div class="gallery__grid">
+        <div class="gallery__item">
+          <img src="img/pedigree.jfif" alt="Pedigree brand board example" loading="lazy" onerror="this.parentElement.style.background='#ffe4d6'">
+          <span class="tag">pedigree</span>
+        </div>
+        <div class="gallery__item">
+          <img src="img/tymbark.jfif" alt="Tymbark brand board example" loading="lazy" onerror="this.parentElement.style.background='#d6f5d6'">
+          <span class="tag">tymbark</span>
+        </div>
+        <div class="gallery__item">
+          <img src="img/milka.jfif" alt="Milka brand board example" loading="lazy" onerror="this.parentElement.style.background='#e4d6ff'">
+          <span class="tag">milka</span>
+        </div>
+        <div class="gallery__item">
+          <img src="img/wkdzik.jfif" alt="WKDZIK brand board example" loading="lazy" onerror="this.parentElement.style.background='#1a1a1a'">
+          <span class="tag">wkdzik</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="divider">przykłady · prompt poniżej</div>
+  </div>
+
+  <!-- Prompt -->
+  <section class="prompt-section section">
+    <div class="wrap">
+      <div class="prompt-section__head">
+        <div class="prompt-section__eyebrow">
+          <span class="dot"></span>
+          gotowy do skopiowania
+        </div>
+        <h2 class="prompt-section__title">
+          Prompt <span class="italic">konceptu marki</span><br>z AI
+        </h2>
+        <p class="prompt-section__desc">
+          Skopiuj poniższy prompt, wklej URL strony marki w oznaczone miejsce i wygeneruj swój wynik.
+        </p>
+      </div>
+
+      <div class="prompt-wrapper">
+        <div class="prompt-toolbar">
+          <div class="prompt-toolbar__label">
+            <div class="prompt-toolbar__dots">
+              <span class="d1"></span><span class="d2"></span><span class="d3"></span>
+            </div>
+            prompt.txt
+          </div>
+          <button class="btn-copy" id="copyBtn" onclick="copyPrompt()">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M3 11H2.5A1.5 1.5 0 011 9.5v-7A1.5 1.5 0 012.5 1h7A1.5 1.5 0 0111 2.5V3" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <span id="copyLabel">Skopiuj prompt</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="promptBody"></div>
+        <div class="prompt-expand">
+          <button class="btn-expand" id="expandBtn" onclick="toggleExpand()">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4.5L6 8.5L10 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span id="expandLabel">rozwiń pełny prompt</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to use -->
+  <section class="how-to section">
+    <div class="wrap">
+      <h2 class="how-to__title">Jak <span class="italic">używać</span> promptu?</h2>
+      <div class="how-to__steps">
+        <div class="how-to__step">
+          <div class="how-to__step-num">01</div>
+          <div class="how-to__step-icon">📋</div>
+          <h3 class="how-to__step-title">Skopiuj prompt</h3>
+          <p class="how-to__step-text">Użyj przycisku powyżej, aby skopiować cały prompt do schowka jednym kliknięciem.</p>
+        </div>
+        <div class="how-to__step">
+          <div class="how-to__step-num">02</div>
+          <div class="how-to__step-icon">🔗</div>
+          <h3 class="how-to__step-title">Wklej URL strony</h3>
+          <p class="how-to__step-text">Wklej prompt do ChatGPT lub innego modelu AI. Zamień <code style="background:var(--lime-tint);padding:2px 6px;border-radius:4px;font-family:var(--f-mono);font-size:12px;">[ADRES STRONY WWW]</code> na URL wybranej marki.</p>
+        </div>
+        <div class="how-to__step">
+          <div class="how-to__step-num">03</div>
+          <div class="how-to__step-icon">✨</div>
+          <h3 class="how-to__step-title">Wygeneruj planszę</h3>
+          <p class="how-to__step-text">AI automatycznie przeanalizuje markę i stworzy kompletną planszę brandingową z sekcjami A–K.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap footer">
+      <div class="footer__brand">
+        <span style="width:20px;height:20px;border-radius:6px;background:var(--lime);display:inline-flex;align-items:center;justify-content:center;font-family:var(--f-serif);font-style:italic;font-size:14px;">n</span>
+        natalie.kreatywnie
+      </div>
+      <div>
+        <a href="https://www.instagram.com/natalie.kreatywnie/" target="_blank" rel="noopener">@natalie.kreatywnie</a>
+        <span style="margin-inline:10px;color:var(--line)">·</span>
+        prompt do użytku osobistego i edukacyjnego
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7L5.5 10L11.5 4" stroke="#51F500" stroke-width="2" stroke-linecap="round"/></svg>
+    <span>prompt skopiowany <span class="lime">✓</span></span>
+  </div>
+
+  <script>
+    const PROMPT_TEXT = `Hej! Cieszę się, że chcesz przetestować ten prompt. Powodzenia w testach!
+
+# SYSTEM ŚWIATA MARKI — PROMPT KIEROWNICTWA KREATYWNEGO AI
+
+## START
+
+Wklej tutaj adres strony marki:
+
+[ADRES STRONY WWW]
+
+Na podstawie samej strony internetowej:
+
+* pobierz logo,
+* zdefiniuj branding,
+* przeanalizuj estetykę,
+* wykryj kolory,
+* rozpoznaj typografię,
+* określ ton komunikacji,
+* zidentyfikuj branżę,
+* rozpoznaj poziom premium marki,
+* zbuduj kompletny system identyfikacji wizualnej.
+
+Nie wymagaj żadnych dodatkowych materiałów.
+
+---
+
+# TRYB PRACY
+
+Pracuj jak wysokobudżetowe studio kreatywne tworzące branding dla:
+
+* luksusowych marek,
+* marek modowych,
+* marek beauty premium,
+* nowoczesnych startupów,
+* marek wellness,
+* współczesnych marek lifestyle.
+
+Myśl bardziej jak:
+dyrektor kreatywny + architekt marki,
+a mniej jak generator grafiki.
+
+Nie twórz moodboardu. Twórz kompletny i spójny koncept marki.
+
+---
+
+# GŁÓWNE ZAŁOŻENIE
+
+Całość ma wyglądać jak:
+
+* prezentacja brandingu z Dribbble/Behance,
+* prezentacja agencyjna dla klienta premium,
+* system identyfikacji wizualnej gotowy do wdrożenia,
+* nowoczesny ekosystem wizualny,
+* profesjonalna prezentacja marki.
+
+Wszystkie elementy muszą wyglądać jak część jednego systemu. Maja być spójne.
+
+Nie projektuj pojedynczych elementów.
+Projektuj relacje między nimi.
+
+---
+
+# SPOSÓB MYŚLENIA
+
+Najpierw:
+
+* rozpoznaj charakter marki,
+* zrozum emocje,
+* określ status marki,
+* przeanalizuj rytm strony,
+* znajdź motywy powtarzalne,
+* wykryj dominującą energię wizualną,
+* rozpoznaj język estetyczny marki.
+
+Następnie przetłumacz to na:
+
+* system kolorów,
+* język typografii,
+* strukturę układów,
+* kompozycję,
+* światło,
+* branding assets,
+* UI,
+* mockupy,
+* styl kampanii,
+* język mediów społecznościowych,
+* kompozycję.
+
+Nie opisuj procesu.
+Pokaż go wyłącznie wizualnie.
+
+---
+
+# ESTETYKA
+
+Kierunek wizualny:
+
+* premium,
+* współczesny,
+* wyrafinowany,
+* minimalistyczny,
+* redakcyjny,
+* luksusowy,
+* bardzo spójny,
+* inteligentny projektowo,
+* filmowy,
+* systemowy,
+* nowoczesny,
+* wysokokontrastowy.
+
+Unikaj:
+
+* przypadkowych dekoracji,
+* generycznych układów,
+* stockowego klimatu,
+* chaosu,
+* tanio wyglądających i niedopracowanych mockupów,
+* startupowej estetyki,
+* przeładowania w stylu Pinteresta,
+* niespójnych fontów,
+* zbyt wielu kolorów.
+
+Całość ma wyglądać jak projekt stworzony przez topowe studio brandingowe.
+
+---
+
+# ZBUDUJ JEDNĄ DUŻĄ PLANSZĘ
+
+Stwórz jedną rozbudowaną planszę brandingową podzieloną na eleganckie sekcje.
+
+Układ ma być:
+
+* modularny,
+* bardzo czysty,
+* oparty o siatkę,
+* perfekcyjnie wyrównany,
+* przestrzenny,
+* luksusowy,
+* dobrze oddychający.
+
+Każda sekcja musi mieć własną rolę, ale nadal być częścią całości.
+
+---
+
+# ZAWARTOŚĆ PLANSZY
+
+## SEKCJA A — ŚWIAT MARKI
+
+Duży obszar główny pokazujący:
+
+* logo,
+* główny motyw wizualny,
+* atmosferę marki,
+* key visual,
+* kompozycję premium,
+* kampanijny klimat.
+
+To ma być najmocniejszy punkt planszy.
+
+---
+
+## SEKCJA B — ARCHITEKTURA LOGO
+
+Pokaż:
+
+* logo podstawowe,
+* wersję uproszczoną,
+* sygnet,
+* układ poziomy,
+* wersję kompaktową,
+* wariant monochromatyczny,
+* system proporcji i odstępów.
+
+Nie zmieniaj przypadkowo logo - ma pozostać nienaruszone.
+Rozwijaj i przedstawiaj je profesjonalnie. 
+
+Uwaga: jeśli strona nie ma logo - zaprojektuj je.
+
+---
+
+## SEKCJA C — SYSTEM GRAFICZNY
+
+Rozwiń język wizualny marki:
+
+* patterny,
+* motywy geometryczne,
+* tekstury,
+* linie,
+* formy,
+* kadrowanie,
+* elementy kompozycyjne,
+* detale wynikające z logo.
+
+Wszystko musi wyglądać jak naturalne rozszerzenie identyfikacji.
+
+---
+
+## SEKCJA D — IKONY
+
+Zaprojektuj rodzinę ikon:
+
+* minimalistycznych,
+* lekkich,
+* premium,
+* geometrycznych,
+* nowoczesnych.
+
+Styl ikon musi być zgodny z logo i typografią.
+
+---
+
+## SEKCJA E — TYPOGRAFIA + PALETA BARW
+
+Pokaż:
+
+* font nagłówka,
+* font wspierający,
+* system hierarchii,
+* rytm typografii,
+* paletę kolorystyczną,
+* kolory premium,
+* kolory neutralne i dodatkowe,
+* odcienie,
+* kontrasty.
+
+Całość ma wyglądać jak profesjonalny design system.
+
+---
+
+## SEKCJA F — HASŁO MARKI
+
+Wygeneruj slogan wynikający z charakteru marki.
+
+Zaprezentuj go:
+
+* mocno,
+* typograficznie,
+* redakcyjnie,
+* minimalistycznie,
+* premium.
+
+---
+
+## SEKCJA G — ZASTOSOWANIA MARKI
+
+Pokaż realistyczne zastosowania brandingu:
+
+* opakowania,
+* torby,
+* etykiety,
+* wizytówki,
+* produkty,
+* zasoby cyfrowe,
+* akcesoria,
+* obrandowane obiekty pasujące do charakteru marki.
+
+Makiety mają wyglądać realistycznie i luksusowo.
+
+---
+
+## SEKCJA H — KAMPANIA WIZERUNKOWA
+
+Stwórz scenę reklamową:
+
+* filmowe oświetlenie,
+* editorial photography,
+* emocjonalny storytelling,
+* estetyka mody premium,
+* realistyczne światło,
+* luksusowy klimat.
+
+Niech to wygląda jak prawdziwa kampania marki.
+
+---
+
+## SEKCJA I — REKLAMA / OOH / REKLAMY SPOŁECZNOŚCIOWE
+
+Pokaż mini układy reklamowe:
+
+* plakaty,
+* billboardy,
+* reklamy w mediach społecznościowych,
+* launch campaign visuals.
+
+Użyj:
+
+* mocnej typografii,
+* dużej ilości światła,
+* odważnej hierarchii,
+* nowoczesnego editorial design.
+
+---
+
+## SEKCJA J — DOŚWIADCZENIE CYFROWE
+
+Pokaż fragmenty:
+
+* strony internetowej,
+* mobile UI,
+* interfejsów,
+* komponentów systemu.
+
+Styl:
+
+* minimalistyczny,
+* premium,
+* nowoczesny,
+* bardzo czysty/clean.
+
+---
+
+## SEKCJA K — JĘZYK MEDIÓW SPOŁECZNOŚCIOWYCH
+
+Stwórz przykładowe posty marki:
+
+* pod kampanie,
+* redakcyjne,
+* minimalistyczne,
+* typograficzne,
+* luksusowe.
+
+Mają wyglądać jak gotowy system treści marki premium.
+
+---
+
+# NAJWAŻNIEJSZE ZASADY
+
+Całość musi:
+
+* wyglądać jak jeden absolutnie spójny organizm wizualny,
+* utrzymywać perfekcyjny rytm,
+* mieć świetne odstępy,
+* zachowywać hierarchię,
+* być nowoczesna,
+* być wiarygodna,
+* wyglądać drogo i prestiżowo,
+* być bardzo designerska i solidnie zaprojektowana.
+
+Priorytety:
+
+1. myślenie systemowe,
+2. spójność wizualna,
+3. wykonanie klasy premium,
+4. hierarchia,
+5. realizm,
+6. jakość kierownictwa artystycznego.
+
+---
+
+# EFEKT KOŃCOWY
+
+Wygeneruj:
+
+* jedną dużą planszę,
+* branding case study aesthetic,
+* jakość prezentacji studyjnej,
+* ultra szczegółowe wizualizacje,
+* ostrą i wyraźną typografię,
+* czysty, luksusowy układ,
+* wysokiej klasy kierownictwo artystyczne,
+* realistyczne makiety premium,
+* wyrafinowane i dopracowane oświetlenie.
+
+PARAMETRY:
+
+* format pionowy,
+* 1080x1350 px,
+* wysoka szczegółowość,
+* perfekcyjna ostrość,
+* plansza identyfikacji wizualnej premium,
+* nowoczesny grid,
+* luksusowy minimalizm,
+* prezentacja o jakości Dribble/Behance.
+
+Efekt końcowy ma wyglądać jak branding przygotowany przez światowej klasy studio kreatywne dla marki premium.`;
+
+    // Render prompt text into the DOM
+    document.getElementById('promptBody').textContent = PROMPT_TEXT;
+
+    let expanded = false;
+
+    function toggleExpand() {
+      const body = document.getElementById('promptBody');
+      const label = document.getElementById('expandLabel');
+      const btn = document.getElementById('expandBtn');
+      const icon = btn.querySelector('svg path');
+      expanded = !expanded;
+      if (expanded) {
+        body.style.maxHeight = 'none';
+        label.textContent = 'zwiń';
+        icon.setAttribute('d', 'M2 7.5L6 3.5L10 7.5');
+      } else {
+        body.style.maxHeight = '680px';
+        label.textContent = 'rozwiń pełny prompt';
+        icon.setAttribute('d', 'M2 4.5L6 8.5L10 4.5');
+        body.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    function copyPrompt() {
+      navigator.clipboard.writeText(PROMPT_TEXT).then(() => {
+        const btn = document.getElementById('copyBtn');
+        const label = document.getElementById('copyLabel');
+        btn.classList.add('--copied');
+        label.textContent = 'Skopiowano!';
+
+        const toast = document.getElementById('toast');
+        toast.classList.add('is-visible');
+
+        setTimeout(() => {
+          btn.classList.remove('--copied');
+          label.textContent = 'Skopiuj prompt';
+          toast.classList.remove('is-visible');
+        }, 2500);
+      }).catch(() => {
+        // Fallback for older browsers
+        const ta = document.createElement('textarea');
+        ta.value = PROMPT_TEXT;
+        ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        document.getElementById('copyLabel').textContent = 'Skopiowano!';
+        setTimeout(() => { document.getElementById('copyLabel').textContent = 'Skopiuj prompt'; }, 2000);
+      });
+    }
+
+    // Nav scroll effect
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('is-scrolled', window.scrollY > 10);
+    }, { passive: true });
+  </script>
+</body>
+</html>
