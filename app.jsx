@@ -61,6 +61,7 @@ function Nav() {
         </a>
         <nav className="nav__links" aria-label="Sekcje">
           <a href="#instagram">tutoriale</a>
+          <a href="#prompty">prompty</a>
           <a href="#o-mnie">o mnie</a>
           <a href="#kontakt">kontakt</a>
         </nav>
@@ -143,33 +144,38 @@ function Hero({ tweaks }) {
 
 /* =====================================================
    Instagram grid — oficjalne embedy IG
-   =====================================================
+
    Jak dodać kolejny post:
-   1) Skopiuj link do posta z Instagrama (typu: https://www.instagram.com/p/XXXXXXXX/).
-   2) Wklej go w "" w pierwszy wolny slot poniżej, w miejsce pustego stringa.
-   3) Zapisz plik i odśwież stronę — kafelek pojawi się automatycznie.
-   Puste sloty są UKRYTE — nie pokazują się na stronie, dopóki nie wkleisz linku.
+   1) Skopiuj link do posta z Instagrama (np. https://www.instagram.com/p/XXXXXXXX/).
+   2) Wklej go w "" w pierwszy wolny slot poniżej.
+   3) Zapisz plik i odśwież stronę.
+
+   WAŻNE — formaty URL które działają z embed.js:
+     ✅ https://www.instagram.com/p/SHORTCODE/         (posty i reelsy)
+     ✅ https://www.instagram.com/reel/SHORTCODE/      (reelsy — bez nazwy użytkownika)
+     ❌ https://www.instagram.com/UZYTKOWNIK/reel/SHORTCODE/  (NIE działa — embed.js tego nie obsługuje)
+
+   Reelsy skopiowane z aplikacji mobilnej mają często format z nazwą użytkownika.
+   Wystarczy zmienić: /natalie.kreatywnie/reel/KOD/ → /reel/KOD/
    ===================================================== */
 const IG_EMBEDS = [
   "https://www.instagram.com/p/DYUmyVCspnK/",
   "https://www.instagram.com/p/DXgLatCjBO7/",
   "https://www.instagram.com/p/DXegXYoDNQg/",
-  "https://www.instagram.com/natalie.kreatywnie/reel/DXonS4ajCqA/", 
-  "https://www.instagram.com/natalie.kreatywnie/reel/DXtvLqajNsp/", 
-  "https://www.instagram.com/natalie.kreatywnie/reel/DXjaGvZjMkz/",
-  "https://www.instagram.com/natalie.kreatywnie/reel/DXjGOBngLTo/",
-  "https://www.instagram.com/natalie.kreatywnie/reel/DXg1SvuDPta/",
-  "https://www.instagram.com/natalie.kreatywnie/reel/DYOxosmA9VX/", 
+  "https://www.instagram.com/reel/DXonS4ajCqA/",
+  "https://www.instagram.com/reel/DXtvLqajNsp/",
+  "https://www.instagram.com/reel/DXjaGvZjMkz/",
+  "https://www.instagram.com/reel/DXjGOBngLTo/",
+  "https://www.instagram.com/reel/DXg1SvuDPta/",
+  "https://www.instagram.com/reel/DYOxosmA9VX/",
   "", // slot 10
   "", // slot 11
   "", // slot 12
 ];
 
 function InstagramSection() {
-  // Pokazujemy tylko sloty z wklejonym linkiem — pusty string = slot ukryty.
   const activePosts = IG_EMBEDS.filter((url) => url && url.trim() !== "");
 
-  // Ładowanie skryptu embed.js Instagrama + re-processing przy każdym renderze.
   useEffect(() => {
     const SCRIPT_ID = "instagram-embed-script";
 
@@ -236,6 +242,78 @@ function InstagramSection() {
           zobacz wszystko na instagramie
           <Icon.ArrowRight style={{ width: 14, height: 14 }} />
         </a>
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================
+   Prompt Teaser — zajawka podstrony z promptem
+   ===================================================== */
+const PROMPT_PREVIEWS = [
+  { src: "img/pedigree.jfif",  alt: "Pedigree brand board",  label: "pedigree"  },
+  { src: "img/tymbark.png",    alt: "Tymbark brand board",   label: "tymbark"   },
+  { src: "img/milka.jfif",     alt: "Milka brand board",     label: "milka"     },
+  { src: "img/wkdzik.jfif",    alt: "WKDZIK brand board",    label: "wkdzik"    },
+  { src: "img/nivea.jfif",     alt: "Nivea brand board",     label: "nivea"     },
+];
+
+function PromptTeaserSection({ tweaks }) {
+  const useItalic = tweaks.italicAccent;
+
+  return (
+    <section className="section prompt-teaser" id="prompty">
+      <div className="wrap">
+
+        {/* Header */}
+        <div className="section__head">
+          <div className="section__head-row">
+            <div>
+              <span className="mono">narzędzia · prompty</span>
+              <h2 className="h-section">
+                {useItalic
+                  ? <><span className="italic">Prompt</span> do brandingu AI</>
+                  : "Prompt do brandingu AI"}
+              </h2>
+            </div>
+            <span className="section__head-meta">system świata marki ● 11 sekcji</span>
+          </div>
+          <p className="prompt-teaser__desc">
+            Wklej adres strony — AI przeanalizuje markę i zbuduje kompletną planszę brandingową.
+            Poniżej kilka przykładów tego, co można uzyskać.
+          </p>
+        </div>
+
+        {/* Preview strip */}
+        <div className="prompt-teaser__strip">
+          {PROMPT_PREVIEWS.map((img, i) => (
+            <a
+              className="prompt-teaser__card"
+              href="prompt.html"
+              key={i}
+              aria-label={`Przykład dla marki ${img.label}`}
+            >
+              <div className="prompt-teaser__img-wrap">
+                <img src={img.src} alt={img.alt} loading="lazy" />
+              </div>
+              <span className="prompt-teaser__card-label">{img.label}</span>
+            </a>
+          ))}
+        </div>
+
+        {/* CTA bar */}
+        <div className="prompt-teaser__cta-row">
+          <div className="prompt-teaser__pill-group">
+            <span className="pill"><span className="dot"></span>gotowy do skopiowania</span>
+            <span className="pill"><span className="dot"></span>sekcje A–K</span>
+            <span className="pill"><span className="dot"></span>format 1080×1350 px</span>
+          </div>
+          <a className="cta" href="prompt.html">
+            Pobierz prompt
+            <span className="arrow"><Icon.ArrowRight style={{ width: 14, height: 14 }} /></span>
+          </a>
+        </div>
+
       </div>
     </section>
   );
@@ -398,7 +476,6 @@ function Footer() {
   return (
     <footer className="footer wrap">
       <span>© 2026 · natalie.kreatywnie · <a href="https://nprzybylska.pl" target="_blank" rel="noopener">nprzybylska.pl</a></span>
-      {/* <span>made with <span style={{ color: "var(--lime)" }}>●</span> ai &amp; human craft</span> */}
     </footer>
   );
 }
@@ -417,7 +494,6 @@ function Tweaks() {
   const { TweaksPanel, useTweaks, TweakSection, TweakRadio, TweakSelect, TweakToggle, TweakColor } = window;
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
 
-  // Apply color tokens live
   useEffect(() => {
     document.documentElement.style.setProperty("--marker", t.markerColor);
     document.documentElement.style.setProperty("--lime", t.limeColor);
@@ -476,6 +552,7 @@ function App({ tweaks }) {
       <main>
         <Hero tweaks={tweaks} />
         <InstagramSection />
+        <PromptTeaserSection tweaks={tweaks} />
         <AboutSection tweaks={tweaks} />
         <ContactSection tweaks={tweaks} />
       </main>
