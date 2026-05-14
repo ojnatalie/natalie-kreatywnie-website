@@ -316,7 +316,7 @@ function AboutSection({ tweaks }) {
             </div>
             <div className="caption">
               <span className="dot"></span>
-              behind the scenes ● 2026
+              Figma x Claude? ● Tak!
             </div>
           </div>
         </div>
