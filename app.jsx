@@ -271,7 +271,7 @@ function PromptTeaserSection({ tweaks }) {
               <span className="mono">narzędzia · prompty</span>
               <h2 className="h-section">
                 {useItalic
-                  ? <><span className="italic">Stwórz</span>koncept marki z AI</>
+                  ? <><span className="italic">Stwórz </span>koncept marki z AI</>
                   : "Prompt do brandingu AI"}
               </h2>
             </div>
