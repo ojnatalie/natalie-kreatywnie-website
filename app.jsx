@@ -398,7 +398,7 @@ function Footer() {
   return (
     <footer className="footer wrap">
       <span>© 2026 · natalie.kreatywnie · <a href="https://nprzybylska.pl" target="_blank" rel="noopener">nprzybylska.pl</a></span>
-      <span>made with <span style={{ color: "var(--lime)" }}>●</span> ai &amp; human craft</span>
+      {/* <span>made with <span style={{ color: "var(--lime)" }}>●</span> ai &amp; human craft</span> */}
     </footer>
   );
 }
