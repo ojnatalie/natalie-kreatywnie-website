@@ -142,18 +142,56 @@ function Hero({ tweaks }) {
 }
 
 /* =====================================================
-   Instagram grid
+   Instagram grid — oficjalne embedy IG
+   =====================================================
+   Jak dodać kolejny post:
+   1) Skopiuj link do posta z Instagrama (typu: https://www.instagram.com/p/XXXXXXXX/).
+   2) Wklej go w "" w pierwszy wolny slot poniżej, w miejsce pustego stringa.
+   3) Zapisz plik i odśwież stronę — kafelek pojawi się automatycznie.
+   Puste sloty są UKRYTE — nie pokazują się na stronie, dopóki nie wkleisz linku.
    ===================================================== */
-const IG_POSTS = [
-  { src: "img/figma-claude.png", caption: "Projektowanie w Figmie z Claude", url: "https://instagram.com/natalie.kreatywnie" },
-  { src: "img/affinity-green.png", caption: "Affinity × AI — flow", url: "https://instagram.com/natalie.kreatywnie" },
-  { src: "img/ps-banana.png", caption: "Photoshop × Nano Banana", url: "https://instagram.com/natalie.kreatywnie" },
-  { src: "img/affinity-claude.png", caption: "Affinity + Claude tutorial", url: "https://instagram.com/natalie.kreatywnie" },
-  { src: "img/hero-main.png", caption: "Stos narzędzi AI 2026", url: "https://instagram.com/natalie.kreatywnie" },
-  { src: null, caption: "Reels: prompt → grafika", url: "https://instagram.com/natalie.kreatywnie" },
+const IG_EMBEDS = [
+  "https://www.instagram.com/p/DYUmyVCspnK/",
+  "https://www.instagram.com/p/DXgLatCjBO7/",
+  "https://www.instagram.com/p/DXegXYoDNQg/",
+  "", // slot 04 — wklej tu link do kolejnego posta
+  "", // slot 05
+  "", // slot 06
+  "", // slot 07
+  "", // slot 08
+  "", // slot 09
+  "", // slot 10
+  "", // slot 11
+  "", // slot 12
 ];
 
 function InstagramSection() {
+  // Pokazujemy tylko sloty z wklejonym linkiem — pusty string = slot ukryty.
+  const activePosts = IG_EMBEDS.filter((url) => url && url.trim() !== "");
+
+  // Ładowanie skryptu embed.js Instagrama + re-processing przy każdym renderze.
+  useEffect(() => {
+    const SCRIPT_ID = "instagram-embed-script";
+
+    const processEmbeds = () => {
+      if (window.instgrm && window.instgrm.Embeds) {
+        window.instgrm.Embeds.process();
+      }
+    };
+
+    let script = document.getElementById(SCRIPT_ID);
+    if (!script) {
+      script = document.createElement("script");
+      script.id = SCRIPT_ID;
+      script.src = "https://www.instagram.com/embed.js";
+      script.async = true;
+      script.onload = processEmbeds;
+      document.body.appendChild(script);
+    } else {
+      processEmbeds();
+    }
+  }, [activePosts.join("|")]);
+
   return (
     <section className="section insta" id="instagram">
       <div className="wrap">
@@ -165,40 +203,26 @@ function InstagramSection() {
                 Najnowsze z <span className="italic">@natalie.kreatywnie</span>
               </h2>
             </div>
-            <span className="section__head-meta">aktualizacja co tydzień ● 6 / ostatnich</span>
+            <span className="section__head-meta">
+              {activePosts.length} {activePosts.length === 1 ? "post" : "posty"} ● prosto z instagrama
+            </span>
           </div>
         </div>
 
-        <div className="insta__grid">
-          {IG_POSTS.map((p, i) => (
-            <a
-              key={i}
-              className="insta__tile"
-              href={p.url}
-              target="_blank"
-              rel="noopener"
-              aria-label={p.caption}
-            >
-              {p.src ? (
-                <img src={p.src} alt={p.caption} />
-              ) : (
-                <div className="insta__placeholder">
-                  <span className="num">06</span>
-                  <span>najnowszy post</span>
-                  <span>● ig: @natalie.kreatywnie</span>
-                </div>
-              )}
-              <div className="corner" aria-hidden="true">
-                <Icon.Instagram style={{ width: 16, height: 16, color: "#0A0A0A" }} />
-              </div>
-              <div className="insta__overlay">
-                <span>{p.caption}</span>
-                <span className="ig-badge">
-                  otwórz na instagramie
-                  <Icon.ArrowUpRight style={{ width: 12, height: 12 }} />
-                </span>
-              </div>
-            </a>
+        <div className="insta__embed-grid">
+          {activePosts.map((url, i) => (
+            <div className="insta__embed-cell" key={url + i}>
+              <blockquote
+                className="instagram-media"
+                data-instgrm-captioned
+                data-instgrm-permalink={url}
+                data-instgrm-version="14"
+              >
+                <a href={url} target="_blank" rel="noopener">
+                  Zobacz post na Instagramie
+                </a>
+              </blockquote>
+            </div>
           ))}
         </div>
 
