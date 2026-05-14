@@ -777,3 +777,166 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .about__list li .num { font-size: 26px; }
   .contact__card-handle { font-size: 22px; }
 }
+
+/* ============================================================
+   Prompt Teaser Section
+   ============================================================ */
+
+.prompt-teaser {
+  background: var(--ink);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle grid texture */
+.prompt-teaser::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(81,245,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(81,245,0,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+/* Lime glow top-right */
+.prompt-teaser::after {
+  content: "";
+  position: absolute;
+  top: -10%; right: -5%;
+  width: 45%; aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(81,245,0,0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.prompt-teaser .section__head { margin-bottom: clamp(32px, 4vw, 56px); }
+.prompt-teaser .section__head .mono { color: rgba(255,255,255,0.4); }
+
+.prompt-teaser .h-section { color: #fff; }
+.prompt-teaser .h-section .italic { color: var(--lime); }
+
+.prompt-teaser .section__head-meta { color: rgba(255,255,255,0.35); }
+
+.prompt-teaser__desc {
+  font-size: clamp(16px, 1.4vw, 18px);
+  color: rgba(255,255,255,0.55);
+  max-width: 62ch;
+  margin: 16px 0 0;
+  line-height: 1.6;
+}
+
+/* --- Preview strip --- */
+.prompt-teaser__strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(10px, 1vw, 14px);
+  margin-bottom: clamp(32px, 4vw, 48px);
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1000px) { .prompt-teaser__strip { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px)  { .prompt-teaser__strip { grid-template-columns: repeat(2, 1fr); } }
+
+.prompt-teaser__card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.prompt-teaser__img-wrap {
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .3s ease;
+}
+.prompt-teaser__card:hover .prompt-teaser__img-wrap {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(81,245,0,0.3);
+  border-color: rgba(81,245,0,0.4);
+}
+
+.prompt-teaser__img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform .6s cubic-bezier(.2,.7,.2,1);
+}
+.prompt-teaser__card:hover .prompt-teaser__img-wrap img {
+  transform: scale(1.04);
+}
+
+.prompt-teaser__card-label {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: rgba(255,255,255,0.35);
+  transition: color .25s ease;
+  text-align: center;
+}
+.prompt-teaser__card:hover .prompt-teaser__card-label {
+  color: var(--lime);
+}
+
+/* --- CTA row --- */
+.prompt-teaser__cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: clamp(24px, 3vw, 36px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  z-index: 1;
+}
+
+.prompt-teaser__pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.prompt-teaser .pill {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.7);
+}
+.prompt-teaser .pill .dot {
+  background: var(--lime);
+  box-shadow: 0 0 0 3px rgba(81,245,0,0.2);
+}
+.prompt-teaser .pill:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.prompt-teaser .cta {
+  background: var(--lime);
+  color: var(--ink);
+  border-color: var(--lime);
+}
+.prompt-teaser .cta:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--ink);
+  box-shadow: 0 12px 28px rgba(255,255,255,0.15);
+}
+.prompt-teaser .cta .arrow {
+  background: rgba(10,10,10,0.12);
+}
+.prompt-teaser .cta:hover .arrow {
+  background: rgba(10,10,10,0.1);
+}
+
+@media (max-width: 640px) {
+  .prompt-teaser__cta-row { flex-direction: column; align-items: flex-start; }
+  .prompt-teaser__pill-group { gap: 8px; }
+}
