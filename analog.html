@@ -761,15 +761,15 @@
         <div>
           <div class="page-hero__eyebrow">
             <span class="dot"></span>
-            midjourney · analog · sref
+            midjourney · tutorial
           </div>
           <h1 class="page-hero__title">
-            <span class="italic">Analog</span><br>
-            w pięciu<br>parametrach
+            <span class="italic">Klimat analogowych zdjęć</span><br>
+            w<br>Midjourney.
           </h1>
           <p class="page-hero__sub">
-            AI nie pamięta marki aparatu. Pamięta ziarno, tkaninę, kierunek światła.<br>
-            Pięć parametrów — i Midjourney przestaje zgadywać.
+            Uzyskałam powtarzalność klimatu analogowych zdjęć w Midjourney.<br>
+            Pokażę Ci, jak to zrobiłam.
           </p>
 
           <!-- Author note -->
@@ -779,9 +779,16 @@
               <div class="author-note__body">
                 <div class="author-note__label">notatka od autorki</div>
                 <p class="author-note__text">
-                  Najczęstszy zarzut do AI: „nie da się kontrolować”. Da się.<span class="ast">*</span>
-                  <b>--sref</b> pamięta styl. <b>--profile</b> pamięta mnie. Reszta to fizyczny opis — tkanina, ziarno, światło.<span class="ast">*</span>
-                  Resztę konkretu dosypuję na Instagramie.
+                  Czy zdarzyło Ci się walczyć o ten „idealny” styl, a kończyć z losowymi wynikami, które nie pasowały do Twojej wizji? Jeśli tworzysz przy wsparciu AI, to na pewno dotknął Cię problem braku kontroli nad stylem i trudność w odtworzeniu go w dowolnym momencie. Godziny na dopieszczanie promptów, czy testowanie słów kluczowych, a mimo to wyniki są niespójne. <b>To wkurza.</b>
+Myślisz: „jeśli AI ma służyć twórcom, musi dać im precyzję, a nie losowość”.
+Całe szczęście twórcy modeli pomyśleli tak samo.
+
+*
+
+W Midjourney mamy dostęp do parametru <b>—sref</b>. Potrzebujesz powtarzalności w AI? Skorzystaj z niego.
+Na przykładzie efektu analogowych zdjęć pokazuję, co ten niewinny kod może dla nas zrobić.
+A może naprawdę dużo.
+
                 </p>
                 <div class="author-note__sig">
                   <span>~ Natalia</span>
@@ -798,7 +805,7 @@
         <!-- Hero photo (polaroid) -->
         <div class="page-hero__photo">
           <div class="page-hero__photo-frame">
-            <img src="img/analog/01.png" alt="Przykład analogowego portretu wygenerowanego w Midjourney" loading="eager">
+            <img src="img/analog/05.png" alt="Przykład analogowego portretu wygenerowanego w Midjourney" loading="eager">
             <div class="page-hero__photo-caption">
               midjourney · <b>--sref 1042876614 938</b>
             </div>
@@ -816,7 +823,7 @@
         <div>
           <div class="gallery__label">
             <span class="dot"></span>
-            wyniki · ten sam sref, różne prompty
+            ten sam sref, różne prompty
           </div>
           <h2 class="gallery__title">Jeden styl. <span class="italic">Dziesięć kadrów.</span></h2>
         </div>
@@ -853,9 +860,7 @@
             Nie kopiuje treści. <span class="italic">Kopiuje atmosferę.</span>
           </h2>
           <p class="info__text">
-            <b>--sref</b> to parametr Midjourney, który „pamięta” styl wybranego zdjęcia: kolory, tekstury, klimat, ziarno.
-            Wrzucasz ID lub link — i każda kolejna generacja trzyma się tej samej estetyki.
-            Treść kadru zmieniasz w opisie, ale klimat zostaje. To, czego nie da się ująć w jednym przymiotniku, da się ująć w jednym kodzie.
+            <b>--sref</b> to parametr Midjourney, który „pamięta” styl wybranego zdjęcia: kolory, tekstury, klimat, ziarno. Pozwala nam skopiować styl (ale nie dokłaną treść) i wiernie go odtworzyć w kolejnych wygenerowanych wynikach.
           </p>
         </div>
       </div>
@@ -874,7 +879,7 @@
           Przykładowy <span class="italic">prompt</span><br>z parametrami
         </h2>
         <p class="prompt-section__desc">
-          Wklejasz w Midjourney, generujesz, podmieniasz część opisową na własną scenę. Parametry na końcu zostają — to one trzymają styl.
+          Oto przykładowy prompt, który możesz przetestować w Midjourney. Najważniejsze jednak są parametry na końcu - one muszą zostać, bo to one trzymają styl. Dlatego treść prompta możesz zbudować dowolnie - liczą się dodane na końcu parametry.
         </p>
       </div>
 
@@ -916,10 +921,10 @@
           konkretne porady · co który parametr robi
         </div>
         <h2 class="tips__title">
-          AI daje dowolność — <span class="italic">jeśli ją rozumiesz.</span>
+          AI daje dowolność - <span class="italic">jeśli rozumiesz, jak z nią pracować.</span>
         </h2>
         <p class="tips__desc">
-          Sześć rzeczy, które warto wiedzieć, zanim pierwszy raz wpiszesz <b>--sref</b>. Bez ezoteryki. Po kolei.
+          Nie bardzo rozumiesz, co oznaczają parametry na końcu promptu? <b>Oto wyjaśnienie</b>. 
         </p>
       </div>
 
@@ -930,52 +935,52 @@
           <span class="tip__param">--sref [ID lub URL]</span>
           <h3 class="tip__title">Pamięć stylu</h3>
           <p class="tip__text">
-            Przyklejasz styl ze zdjęcia referencyjnego do każdej kolejnej generacji. Możesz podać ID albo link do obrazu — Midjourney potraktuje go jak <b>cytat estetyczny</b>.
+            "Kopiujesz" styl ze zdjęcia referencyjnego do każdej kolejnej generacji. Możesz podać ID albo link do obrazu — Midjourney potraktuje go jako <b>wzór stylu</b>.
           </p>
         </div>
 
         <div class="tip">
           <div class="tip__num">02</div>
-          <span class="tip__param">--profile [kod]</span>
-          <h3 class="tip__title">Twój podpis</h3>
+          <span class="tip__param">--profile [kod]/ --p</span>
+          <h3 class="tip__title">Personalizacja</h3>
           <p class="tip__text">
-            Profile budujesz w Midjourney przez ocenianie własnych generacji. Z czasem model uczy się, co lubisz. Im dłużej używasz, tym <b>bardziej Cię rozumie</b>.
+            Poprzez polubienie lub wybór zdjęć, Midjourney rozpoznaje, jaki rodzaj estetyki preferujesz. Z czasem model uczy się, co lubisz. Im dłużej używasz, tym <b>bardziej Cię rozumie</b>. Personalizacja to paramter wyglądający np. tak: --p ylfaht8. Dodając go na w prompcie, odwzorowujesz styl, który zawiera.
           </p>
         </div>
 
         <div class="tip">
           <div class="tip__num">03</div>
-          <span class="tip__param">--stylize 1000</span>
-          <h3 class="tip__title">Maks. swoboda</h3>
+          <span class="tip__param">--stylize [0-1000] (--s)</span>
+          <h3 class="tip__title">Kontroluj artystyczny charakter</h3>
           <p class="tip__text">
-            Wysoki stylize = MJ ma więcej swobody artystycznej. Ale wciąż w ramach stylu z <b>--sref</b>. Jeden parametr trzyma w ryzach dwa.
+            Wysoki --stylize = Midjourney ma więcej swobody artystycznej. Niska wartość - MJ ściślej dopasowuje się do promptu, ale wynik jest mniej "artystyczny". 
           </p>
         </div>
 
         <div class="tip">
           <div class="tip__num">04</div>
           <span class="tip__param">--raw</span>
-          <h3 class="tip__title">Bez „MJ-make-upu”</h3>
+          <h3 class="tip__title">Fotorealizm</h3>
           <p class="tip__text">
-            Wyłącza domyślne upiększanie. Mniej cukru w kolorach, mniej idealnych twarzy. <b>Bliżej dokumentu, dalej od reklamy.</b> Bez tego analog wychodzi sztuczny.
+            Wyłącza domyślne "upiększanie" nadawane przez model. Wynik staje się bardziej realistyczny i surowy. <b>Bliżej fotografii, dalej od płaskiej reklamy.</b>
           </p>
         </div>
 
         <div class="tip">
           <div class="tip__num">05</div>
-          <span class="tip__param">--ar 4:5</span>
+          <span class="tip__param">--ar</span>
           <h3 class="tip__title">Format kadru</h3>
           <p class="tip__text">
-            Proporcja zdjęć z polaroidu albo średnioformatowca. <b>4:5, 3:4, 2:3</b> — analogowy aparat nigdy nie był poziomy w smartfonie. Format też niesie klimat.
+            Paramter służocy do określania formatu. <b>4:5, 3:4, 2:3</b> - te sprawdzą się najlepiej, ale nic nie stoi na przeszkodzie, by go zmienić.
           </p>
         </div>
 
         <div class="tip">
           <div class="tip__num">06</div>
-          <span class="tip__param">opis fizyczny</span>
-          <h3 class="tip__title">Tkanina, ziarno, światło</h3>
+          <span class="tip__param">Budowa promptu</span>
+          <h3 class="tip__title">Promptuj niedoskonałości</h3>
           <p class="tip__text">
-            W prompcie pisz: „35mm film look”, „fine grain”, „soft natural daylight”, „shallow depth of field”. <b>AI nie czyta marek aparatów. Czyta materiał.</b>
+           Nie próbuj tworzyć idealnego piękna. Zamiast tego, skup się na mankamentach, które budują realizm. <b>Użyj: visible pores, freckles, subtle imperfections</b>. Kontroluj parametry techniczne aparatu oraz pamiętaj, by określić typ ujęcia. 
           </p>
         </div>
 
@@ -990,19 +995,17 @@
         <div>
           <div class="ig-cta__eyebrow">
             <span class="dot"></span>
-            więcej takich rozbiórek
+            chcesz więcej takich tutoriali?
           </div>
           <h2 class="ig-cta__title">
-            Karuzela, z której to powstało,<br>
-            jest na <span class="italic">Instagramie.</span>
+            Zaobserwuj mój profil<br>
+            na <span class="italic">Instagramie.</span>
           </h2>
           <p class="ig-cta__text">
-            Tam też dosypuję resztę: parametry, sety, błędy, refy.<span class="ast">*</span>
-            Bez teorii. Bez „AI zmieni świat”.<span class="ast">*</span>
-            Tylko to, co działa w robocie.
+            To tam publikuję nowe tutoriale. Będzie mi miło, gdy mnie wesprzesz swoją obecnością : )
           </p>
           <a class="ig-cta__btn" href="https://www.instagram.com/natalie.kreatywnie/" target="_blank" rel="noopener">
-            Otwórz @natalie.kreatywnie
+            Przejdź do profilu @natalie.kreatywnie
             <svg viewBox="0 0 16 16" fill="none">
               <path d="M5 11L11 5M11 5H6M11 5V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -1032,7 +1035,7 @@
       <div>
         <a href="https://www.instagram.com/natalie.kreatywnie/" target="_blank" rel="noopener">@natalie.kreatywnie</a>
         <span style="margin-inline:10px;color:var(--line)">·</span>
-        midjourney · sref · analog · do użytku edukacyjnego
+        midjourney · tutorial · do użytku edukacyjnego
       </div>
     </div>
   </footer>
