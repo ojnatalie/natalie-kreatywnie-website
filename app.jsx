@@ -61,7 +61,8 @@ function Nav() {
         </a>
         <nav className="nav__links" aria-label="Sekcje">
           <a href="#instagram">tutoriale</a>
-          <a href="#prompty">prompty</a>
+          <a href="#prompty">branding z AI</a>
+          <a href="#midjourney">analogowe zdjęcia z AI</a>
           <a href="#o-mnie">o mnie</a>
           <a href="#kontakt">kontakt</a>
         </nav>
@@ -318,6 +319,76 @@ function PromptTeaserSection({ tweaks }) {
 }
 
 /* =====================================================
+   Analog Teaser — zajawka podstrony z tutorialem MJ
+   ===================================================== */
+const ANALOG_PREVIEWS = [
+  { src: "img/analog/01.png", alt: "Analog portrait — mohair sweter",   label: "studio"    },
+  { src: "img/analog/03.png", alt: "Analog street portrait",            label: "daylight"  },
+  { src: "img/analog/05.png", alt: "Analog editorial — krawat",         label: "editorial" },
+  { src: "img/analog/06.png", alt: "Analog library portrait",           label: "library"   },
+  { src: "img/analog/10.png", alt: "Analog candid 2000s",               label: "2000s"     },
+];
+
+function AnalogTeaserSection({ tweaks }) {
+  const useItalic = tweaks.italicAccent;
+
+  return (
+    <section className="section prompt-teaser" id="midjourney">
+      <div className="wrap">
+
+        {/* Header */}
+        <div className="section__head">
+          <div className="section__head-row">
+            <div>
+              <span className="mono">narzędzia · tutoriale</span>
+              <h2 className="h-section">
+                {useItalic
+                  ? <><span className="italic">Analog</span> z Midjourney</>
+                  : "Analog z Midjourney"}
+              </h2>
+            </div>
+            <span className="section__head-meta">midjourney ● --sref ● klimat lat 90.</span>
+          </div>
+          <p className="prompt-teaser__desc">
+            AI nie pamięta marki aparatu. Pamięta ziarno, tkaninę, kierunek światła. Pokazuję pięć parametrów, które trzymają styl w jednym miejscu. Poniżej kadry wygenerowane jednym sref-em.
+          </p>
+        </div>
+
+        {/* Preview strip */}
+        <div className="prompt-teaser__strip">
+          {ANALOG_PREVIEWS.map((img, i) => (
+            <a
+              className="prompt-teaser__card"
+              href="analog.html"
+              key={i}
+              aria-label={`Tutorial: analog w Midjourney — ${img.label}`}
+            >
+              <div className="prompt-teaser__img-wrap">
+                <img src={img.src} alt={img.alt} loading="lazy" />
+              </div>
+              <span className="prompt-teaser__card-label">{img.label}</span>
+            </a>
+          ))}
+        </div>
+
+        {/* CTA bar */}
+        <div className="prompt-teaser__cta-row">
+          <div className="prompt-teaser__pill-group">
+            <span className="pill"><span className="dot"></span>tutorial krok po kroku</span>
+            <span className="pill"><span className="dot"></span>--sref · --raw · --stylize</span>
+          </div>
+          <a className="cta" href="analog.html">
+            Otwórz tutorial
+            <span className="arrow"><Icon.ArrowRight style={{ width: 14, height: 14 }} /></span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================
    About
    ===================================================== */
 function AboutSection({ tweaks }) {
@@ -551,6 +622,7 @@ function App({ tweaks }) {
         <Hero tweaks={tweaks} />
         <InstagramSection />
         <PromptTeaserSection tweaks={tweaks} />
+        <AnalogTeaserSection tweaks={tweaks} />
         <AboutSection tweaks={tweaks} />
         <ContactSection tweaks={tweaks} />
       </main>
