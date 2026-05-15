@@ -60,9 +60,8 @@ function Nav() {
           <span>natalie.kreatywnie</span>
         </a>
         <nav className="nav__links" aria-label="Sekcje">
-          <a href="#instagram">tutoriale</a>
-          <a href="#prompty">branding z AI</a>
-          <a href="#midjourney">analogowe zdjęcia z AI</a>
+          <a href="#instagram">tutoriale video</a>
+          <a href="#prompty">porady AI</a>
           <a href="#o-mnie">o mnie</a>
           <a href="#kontakt">kontakt</a>
         </nav>
@@ -326,7 +325,7 @@ const ANALOG_PREVIEWS = [
   { src: "img/analog/03.png", alt: "Analog street portrait",            label: "daylight"  },
   { src: "img/analog/05.png", alt: "Analog editorial — krawat",         label: "editorial" },
   { src: "img/analog/06.png", alt: "Analog library portrait",           label: "library"   },
-  { src: "img/analog/10.png", alt: "Analog candid 2000s",               label: "2000s"     },
+  { src: "img/analog/07.png", alt: "Analog candid 2000s",               label: "2000s"     },
 ];
 
 function AnalogTeaserSection({ tweaks }) {
@@ -343,14 +342,14 @@ function AnalogTeaserSection({ tweaks }) {
               <span className="mono">narzędzia · tutoriale</span>
               <h2 className="h-section">
                 {useItalic
-                  ? <><span className="italic">Analog</span> z Midjourney</>
+                  ? <><span className="italic">Klimat zdjęć analogowych</span> z Midjourney</>
                   : "Analog z Midjourney"}
               </h2>
             </div>
-            <span className="section__head-meta">midjourney ● --sref ● klimat lat 90.</span>
+            <span className="section__head-meta">midjourney ● tutorial ● klimat lat 90.</span>
           </div>
           <p className="prompt-teaser__desc">
-            AI nie pamięta marki aparatu. Pamięta ziarno, tkaninę, kierunek światła. Pokazuję pięć parametrów, które trzymają styl w jednym miejscu. Poniżej kadry wygenerowane jednym sref-em.
+            Uzyskałam powtarzalność klimatu analogowych zdjęć w Midjourney. Pokażę Ci, jak to zrobiłam.
           </p>
         </div>
 
@@ -375,7 +374,7 @@ function AnalogTeaserSection({ tweaks }) {
         <div className="prompt-teaser__cta-row">
           <div className="prompt-teaser__pill-group">
             <span className="pill"><span className="dot"></span>tutorial krok po kroku</span>
-            <span className="pill"><span className="dot"></span>--sref · --raw · --stylize</span>
+            <span className="pill"><span className="dot"></span>midjourney</span>
           </div>
           <a className="cta" href="analog.html">
             Otwórz tutorial
