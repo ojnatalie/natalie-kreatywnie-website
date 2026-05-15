@@ -61,7 +61,7 @@ function Nav() {
         </a>
         <nav className="nav__links" aria-label="Sekcje">
           <a href="#instagram">tutoriale video</a>
-          <a href="#prompty">porady AI</a>
+          <a href="#porady-ai">porady AI</a>
           <a href="#o-mnie">o mnie</a>
           <a href="#kontakt">kontakt</a>
         </nav>
@@ -96,7 +96,7 @@ function Hero({ tweaks }) {
             <div className="hero__label">
               <span className="tag">Cześć!</span>
               <span className="ast">*</span>
-              <span className="mono" style={{ fontSize: 11 }}>natalie.kreatywnie ● Opole</span>
+              <span className="mono" style={{ fontSize: 11 }}>natalie.kreatywnie</span>
             </div>
 
             <h1 className="h-display hero__h1">
@@ -204,7 +204,15 @@ function InstagramSection() {
         <div className="section__head">
           <div className="section__head-row">
             <div>
-              <span className="mono">z instagrama</span>
+              <div className="insta__byline">
+                <img
+                  className="insta__avatar"
+                  src="img/avatar-ig.jpg"
+                  alt="natalie.kreatywnie — avatar Instagram"
+                  loading="lazy"
+                />
+                <span className="mono">z instagrama</span>
+              </div>
               <h2 className="h-section">
                 Najnowsze z <span className="italic">@natalie.kreatywnie</span>
               </h2>
@@ -241,6 +249,45 @@ function InstagramSection() {
           zobacz wszystko na instagramie
           <Icon.ArrowRight style={{ width: 14, height: 14 }} />
         </a>
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================
+   Tutorials Intro — nagłówek serii sekcji z tutorialami
+   ===================================================== */
+function TutorialsIntro({ tweaks }) {
+  const useItalic = tweaks.italicAccent;
+  return (
+    <section className="section prompt-teaser tutorials-intro" id="porady-ai">
+      <div className="wrap">
+        <div className="tutorials-intro__inner">
+          <span className="mono">narzędzia · seria</span>
+          <h2 className="h-section tutorials-intro__title">
+            {useItalic
+              ? <>Tutoriale <span className="italic">z AI?</span></>
+              : "Tutoriale z AI?"}
+          </h2>
+          <p className="tutorials-intro__desc">
+            Konkretne prompty, rozbiory parametrów, gotowe pliki do skopiowania.
+            Wybierz, co Cię interesuje — branding, realistyczna skóra w portretach, klimat zdjęć analogowych.
+          </p>
+          <div className="tutorials-intro__chips">
+            <a href="#prompty" className="tutorials-intro__chip">
+              <span className="num">01</span>
+              <span>branding marki</span>
+            </a>
+            <a href="#skora" className="tutorials-intro__chip">
+              <span className="num">02</span>
+              <span>realistyczna skóra</span>
+            </a>
+            <a href="#midjourney" className="tutorials-intro__chip">
+              <span className="num">03</span>
+              <span>analog · midjourney</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -308,6 +355,77 @@ function PromptTeaserSection({ tweaks }) {
           </div>
           <a className="cta" href="prompt.html">
             Pobierz prompt
+            <span className="arrow"><Icon.ArrowRight style={{ width: 14, height: 14 }} /></span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================
+   Skora Teaser — zajawka podstrony z tutorialem AI skóra
+   ===================================================== */
+const SKORA_PREVIEWS = [
+  { src: "img/skora/skin-1.jpeg", alt: "Realistyczna skóra — portret editorial",  label: "editorial" },
+  { src: "img/skora/skin-2.jpeg", alt: "Realistyczna skóra — fujifilm candid",    label: "fujifilm"  },
+  { src: "img/skora/skin-3.jpeg", alt: "Realistyczna skóra — ultra realistic",    label: "ultra"     },
+  { src: "img/skora/skin-4.jpeg", alt: "Realistyczna skóra — no makeup look",     label: "no makeup" },
+  { src: "img/skora/skin-5.jpeg", alt: "Realistyczna skóra — 3/4 morning light",  label: "morning"   },
+];
+
+function SkoraTeaserSection({ tweaks }) {
+  const useItalic = tweaks.italicAccent;
+
+  return (
+    <section className="section prompt-teaser" id="skora">
+      <div className="wrap">
+
+        {/* Header */}
+        <div className="section__head">
+          <div className="section__head-row">
+            <div>
+              <span className="mono">narzędzia · tutoriale</span>
+              <h2 className="h-section">
+                {useItalic
+                  ? <><span className="italic">Realistyczna skóra</span> w AI</>
+                  : "Realistyczna skóra w AI"}
+              </h2>
+            </div>
+            <span className="section__head-meta">portrety AI ● koniec plastikowej skóry</span>
+          </div>
+          <p className="prompt-teaser__desc">
+            AI domyślnie wygładza twarze do plastiku. Pokazuję trzy kroki i sześć gotowych promptów,
+            które zwracają skórze pory, piegi, tęskni za grain-em.
+          </p>
+        </div>
+
+        {/* Preview strip */}
+        <div className="prompt-teaser__strip">
+          {SKORA_PREVIEWS.map((img, i) => (
+            <a
+              className="prompt-teaser__card"
+              href="skora.html"
+              key={i}
+              aria-label={`Tutorial: realistyczna skóra w AI — ${img.label}`}
+            >
+              <div className="prompt-teaser__img-wrap">
+                <img src={img.src} alt={img.alt} loading="lazy" />
+              </div>
+              <span className="prompt-teaser__card-label">{img.label}</span>
+            </a>
+          ))}
+        </div>
+
+        {/* CTA bar */}
+        <div className="prompt-teaser__cta-row">
+          <div className="prompt-teaser__pill-group">
+            <span className="pill"><span className="dot"></span>6 gotowych promptów</span>
+            <span className="pill"><span className="dot"></span>midjourney · dall·e · sd</span>
+          </div>
+          <a className="cta" href="skora.html">
+            Otwórz tutorial
             <span className="arrow"><Icon.ArrowRight style={{ width: 14, height: 14 }} /></span>
           </a>
         </div>
@@ -620,7 +738,9 @@ function App({ tweaks }) {
       <main>
         <Hero tweaks={tweaks} />
         <InstagramSection />
+        <TutorialsIntro tweaks={tweaks} />
         <PromptTeaserSection tweaks={tweaks} />
+        <SkoraTeaserSection tweaks={tweaks} />
         <AnalogTeaserSection tweaks={tweaks} />
         <AboutSection tweaks={tweaks} />
         <ContactSection tweaks={tweaks} />
