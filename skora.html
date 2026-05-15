@@ -1,0 +1,1141 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jak naprawić plastikową skórę w AI — natalie.kreatywnie</title>
+  <meta name="description" content="3 kroki do realistycznej skóry w generowaniu AI. Gotowe prompty do skopiowania. Autorstwa Natalii @natalie.kreatywnie" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #FAFAFA;
+      --ink: #0A0A0A;
+      --ink-2: #1A1A1A;
+      --muted: #6B6B6B;
+      --muted-2: #9A9A9A;
+      --line: #E6E6E6;
+
+      --lime: #51F500;
+      --lime-tint: #F0FCE0;
+      --lime-tint-2: #EBF9D6;
+      --marker: #FFE600;
+
+      --shadow-soft: 0 8px 24px rgba(0,0,0,0.06);
+      --shadow-lift: 0 12px 24px rgba(0,0,0,0.08);
+      --shadow-card-hover: 0 18px 36px rgba(0,0,0,0.10);
+
+      --f-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+      --f-mono: "DM Mono", ui-monospace, "JetBrains Mono", Menlo, monospace;
+      --f-serif: "Instrument Serif", "Times New Roman", serif;
+
+      --r-card: 16px;
+      --r-pill: 999px;
+      --maxw: 1240px;
+      --pad: clamp(20px, 4vw, 56px);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--f-sans);
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.55;
+      letter-spacing: -0.005em;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+    ::selection { background: var(--lime); color: var(--ink); }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: var(--pad);
+    }
+
+    /* ---- Nav ---- */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(140%) blur(12px);
+      -webkit-backdrop-filter: saturate(140%) blur(12px);
+      background: rgba(250,250,250,0.78);
+      border-bottom: 1px solid var(--line);
+      transition: border-color .2s;
+    }
+    .nav.is-scrolled { border-bottom-color: rgba(10,10,10,0.12); }
+    .nav__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-block: 18px;
+    }
+    .nav__brand {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--f-sans); font-weight: 700;
+      letter-spacing: -0.015em; font-size: 16px;
+    }
+    .nav__brand .glyph {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: var(--lime);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--f-serif); font-style: italic;
+      font-size: 20px; color: var(--ink);
+      box-shadow: 0 0 0 2px #fff inset, 0 4px 14px rgba(81,245,0,0.35);
+    }
+    .nav__back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--f-mono); font-size: 12px;
+      letter-spacing: 0.06em; text-transform: lowercase;
+      color: var(--muted); transition: color .2s;
+    }
+    .nav__back:hover { color: var(--ink); }
+    .nav__back svg { transition: transform .25s ease; }
+    .nav__back:hover svg { transform: translateX(-3px); }
+
+    /* ---- Page Hero ---- */
+    .page-hero {
+      padding-top: clamp(56px, 8vw, 104px);
+      padding-bottom: 0;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 55%; aspect-ratio: 1;
+      background: radial-gradient(circle, rgba(81,245,0,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .page-hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 72px);
+      align-items: end;
+    }
+    @media (max-width: 860px) {
+      .page-hero__inner { grid-template-columns: 1fr; }
+      .page-hero__slides { display: none; }
+    }
+    .page-hero__left {
+      padding-bottom: clamp(48px, 6vw, 80px);
+    }
+    .page-hero__eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--f-mono); font-size: 12px;
+      letter-spacing: 0.08em; text-transform: lowercase;
+      color: var(--muted); margin-bottom: 22px;
+    }
+    .page-hero__eyebrow .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--lime); }
+    .page-hero__title {
+      font-family: var(--f-sans); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.0;
+      font-size: clamp(40px, 6.5vw, 80px);
+      margin: 0 0 24px; color: var(--ink);
+      text-wrap: balance;
+    }
+    .page-hero__title .italic {
+      font-family: var(--f-serif); font-weight: 400; font-style: italic;
+      letter-spacing: -0.015em;
+    }
+    .page-hero__sub {
+      font-size: clamp(16px, 1.5vw, 19px);
+      color: var(--muted); max-width: 52ch;
+      line-height: 1.65; margin: 0 0 32px;
+    }
+    .page-hero__meta {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .page-hero__badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px;
+      border: 1.5px solid var(--ink);
+      border-radius: var(--r-pill);
+      font-family: var(--f-mono); font-size: 11px;
+      letter-spacing: 0.08em; text-transform: lowercase;
+      background: #fff;
+    }
+    .page-hero__badge .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--lime); }
+
+    /* hero slides strip */
+    .page-hero__slides {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      align-self: end;
+    }
+    .hero-slide {
+      border-radius: 12px 12px 0 0;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: #ececec;
+      transition: transform .4s cubic-bezier(.2,.7,.2,1);
+    }
+    .hero-slide:nth-child(2) { transform: translateY(20px); }
+    .hero-slide:hover { transform: translateY(-6px) !important; }
+    .hero-slide img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
+    /* marker highlight */
+    .marker {
+      background-image: linear-gradient(transparent 58%, var(--marker) 58%, var(--marker) 94%, transparent 94%);
+      background-repeat: no-repeat; padding-inline: 2px;
+    }
+
+    /* ---- Steps Section ---- */
+    .steps-section {
+      padding-block: clamp(72px, 10vw, 120px);
+      position: relative;
+    }
+    .steps-section__intro {
+      max-width: 700px;
+      margin-bottom: clamp(48px, 6vw, 72px);
+    }
+    .section-eyebrow {
+      font-family: var(--f-mono); font-size: 12px;
+      letter-spacing: 0.08em; text-transform: lowercase;
+      color: var(--muted); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-eyebrow .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--lime); }
+    .section-title {
+      font-family: var(--f-sans); font-weight: 800;
+      font-size: clamp(28px, 3.8vw, 52px);
+      letter-spacing: -0.02em; margin: 0 0 16px; line-height: 1.04;
+    }
+    .section-title .italic {
+      font-family: var(--f-serif); font-weight: 400; font-style: italic;
+    }
+    .section-desc {
+      color: var(--muted); font-size: clamp(16px,1.4vw,18px);
+      line-height: 1.65; margin: 0;
+    }
+
+    /* Step cards */
+    .step-card {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: clamp(20px, 3vw, 40px);
+      padding: clamp(28px, 3vw, 40px);
+      background: #fff;
+      border: 1.5px solid var(--ink);
+      border-radius: var(--r-card);
+      margin-bottom: clamp(16px, 2vw, 24px);
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease;
+    }
+    .step-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card-hover);
+    }
+    .step-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--lime);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .4s cubic-bezier(.2,.7,.2,1);
+    }
+    .step-card:hover::before { transform: scaleX(1); }
+
+    /* step with image */
+    .step-card--with-img {
+      grid-template-columns: 72px 1fr auto;
+      align-items: start;
+    }
+    .step-card__img {
+      width: 160px;
+      aspect-ratio: 3/4;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #ececec;
+      flex-shrink: 0;
+      align-self: center;
+    }
+    .step-card__img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    @media (max-width: 720px) {
+      .step-card--with-img { grid-template-columns: 72px 1fr; }
+      .step-card__img { display: none; }
+    }
+
+    .step-num {
+      width: 72px; height: 72px;
+      border-radius: 18px;
+      background: var(--lime);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--f-serif); font-style: italic;
+      font-size: 36px; color: var(--ink); font-weight: 400;
+      box-shadow: 0 4px 14px rgba(81,245,0,0.3);
+      flex-shrink: 0;
+      align-self: flex-start;
+    }
+    .step-body { min-width: 0; }
+    .step-label {
+      font-family: var(--f-mono); font-size: 11px;
+      letter-spacing: 0.1em; text-transform: lowercase;
+      color: var(--muted); margin-bottom: 8px;
+    }
+    .step-title {
+      font-family: var(--f-sans); font-weight: 800;
+      font-size: clamp(20px, 2.2vw, 26px);
+      letter-spacing: -0.02em; margin: 0 0 12px; line-height: 1.1;
+    }
+    .step-desc {
+      font-size: 16px; color: var(--ink-2);
+      line-height: 1.65; margin: 0 0 20px;
+    }
+    .step-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .step-tag {
+      font-family: var(--f-mono); font-size: 12px;
+      letter-spacing: 0.04em;
+      padding: 6px 12px;
+      border: 1.5px solid var(--ink);
+      border-radius: var(--r-pill);
+      background: var(--lime-tint);
+      color: var(--ink);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 600px) {
+      .step-card { grid-template-columns: 1fr; }
+      .step-num { width: 56px; height: 56px; font-size: 28px; border-radius: 14px; }
+    }
+
+    /* ---- Prompts Section ---- */
+    .prompts-section {
+      background: var(--ink);
+      color: #fff;
+      padding-block: clamp(72px, 10vw, 120px);
+      position: relative;
+      overflow: hidden;
+    }
+    .prompts-section::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(81,245,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(81,245,0,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .prompts-section::after {
+      content: "";
+      position: absolute;
+      bottom: -15%; left: -8%;
+      width: 50%; aspect-ratio: 1;
+      background: radial-gradient(circle, rgba(81,245,0,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .prompts-section .section-eyebrow .dot { background: var(--lime); }
+    .prompts-section .section-eyebrow { color: rgba(255,255,255,0.4); }
+    .prompts-section .section-title { color: #fff; }
+    .prompts-section .section-title .italic { color: var(--lime); }
+    .prompts-section .section-desc { color: rgba(255,255,255,0.5); }
+
+    .prompts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(14px, 1.6vw, 20px);
+      margin-top: clamp(40px, 5vw, 60px);
+      position: relative; z-index: 1;
+    }
+    @media (max-width: 820px) { .prompts-grid { grid-template-columns: 1fr; } }
+
+    .prompt-card {
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: var(--r-card);
+      overflow: hidden;
+      transition: border-color .3s, background .3s, transform .3s cubic-bezier(.2,.7,.2,1);
+    }
+    .prompt-card:hover {
+      border-color: rgba(81,245,0,0.5);
+      background: rgba(255,255,255,0.09);
+      transform: translateY(-3px);
+    }
+
+    .prompt-card__toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+    }
+    .prompt-card__num {
+      font-family: var(--f-mono); font-size: 11px;
+      letter-spacing: 0.1em; text-transform: lowercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .prompt-card__copy {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: var(--f-mono); font-size: 11px;
+      letter-spacing: 0.06em; text-transform: lowercase;
+      color: var(--lime);
+      padding: 6px 12px;
+      border: 1px solid rgba(81,245,0,0.4);
+      border-radius: var(--r-pill);
+      transition: background .2s, color .2s;
+      cursor: pointer;
+    }
+    .prompt-card__copy:hover { background: var(--lime); color: var(--ink); }
+    .prompt-card__copy.--copied { background: var(--lime); color: var(--ink); }
+
+    .prompt-card__body {
+      padding: 20px 18px;
+    }
+    .prompt-card__hint {
+      font-family: var(--f-mono); font-size: 11px;
+      letter-spacing: 0.08em; text-transform: lowercase;
+      color: rgba(255,255,255,0.3); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .prompt-card__hint .dot { width: 5px; height: 5px; border-radius: 999px; background: var(--lime); }
+
+    .prompt-card__text {
+      font-family: var(--f-mono); font-size: 13px;
+      line-height: 1.7; color: rgba(255,255,255,0.8);
+      margin: 0;
+    }
+    .prompt-card__mj {
+      margin-top: 16px; padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      font-family: var(--f-mono); font-size: 12px;
+      color: rgba(255,255,255,0.75); letter-spacing: 0.04em;
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .prompt-card__mj-label {
+      font-size: 10px; letter-spacing: 0.1em; text-transform: lowercase;
+      color: rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px; padding: 2px 7px;
+      white-space: nowrap;
+    }
+    .prompt-card__mj-params {
+      color: var(--lime);
+    }
+
+    /* result image inside prompt card */
+    .prompt-card__result {
+      margin: 18px -18px -20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      background: #0a0a0a;
+      overflow: hidden;
+    }
+    .prompt-card__result::before {
+      content: "wynik";
+      position: absolute;
+      top: 14px; left: 16px;
+      z-index: 2;
+      font-family: var(--f-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: lowercase;
+      color: var(--ink);
+      background: var(--lime);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .prompt-card__result img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      object-position: center;
+      transition: transform .6s cubic-bezier(.2,.7,.2,1);
+    }
+    .prompt-card:hover .prompt-card__result img {
+      transform: scale(1.03);
+    }
+
+    /* ---- Gallery Section ---- */
+    .gallery-section {
+      padding-block: clamp(72px, 10vw, 120px);
+    }
+
+    .gallery-row {
+      margin-bottom: clamp(40px, 5vw, 56px);
+    }
+    .gallery-row__label {
+      display: flex; align-items: center; gap: 12px;
+      font-family: var(--f-mono); font-size: 11px;
+      letter-spacing: 0.1em; text-transform: lowercase;
+      color: var(--muted); margin-bottom: 16px;
+    }
+    .gallery-row__label .line { flex: 1; height: 1px; background: var(--line); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(10px, 1.2vw, 14px);
+    }
+    @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .gallery-grid--6 {
+      grid-template-columns: repeat(6, 1fr);
+    }
+    @media (max-width: 1000px) { .gallery-grid--6 { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 600px)  { .gallery-grid--6 { grid-template-columns: repeat(2, 1fr); } }
+
+    .gallery-item {
+      aspect-ratio: 3 / 4;
+      border-radius: var(--r-card);
+      overflow: hidden;
+      background: #ececec;
+      transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease;
+    }
+    .gallery-item:hover { transform: translateY(-5px) rotate(0.3deg); box-shadow: var(--shadow-card-hover); }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+      transition: transform .6s cubic-bezier(.2,.7,.2,1);
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    /* slide gallery items — square ratio */
+    .gallery-item--slide {
+      aspect-ratio: 9 / 16;
+    }
+
+    /* ---- Tips Section ---- */
+    .tips-section {
+      background: var(--lime-tint);
+      padding-block: clamp(64px, 9vw, 112px);
+      border-top: 1.5px solid rgba(81,245,0,0.3);
+      border-bottom: 1.5px solid rgba(81,245,0,0.3);
+    }
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(14px, 2vw, 24px);
+      margin-top: clamp(36px, 4vw, 52px);
+    }
+    @media (max-width: 820px) { .tips-grid { grid-template-columns: 1fr; } }
+
+    .tip-card {
+      background: #fff;
+      border: 1.5px solid var(--ink);
+      border-radius: var(--r-card);
+      padding: 28px 24px;
+      transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s;
+    }
+    .tip-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+    .tip-card__icon { font-size: 28px; margin-bottom: 16px; display: block; }
+    .tip-card__title {
+      font-family: var(--f-sans); font-weight: 700;
+      font-size: 17px; letter-spacing: -0.015em; margin: 0 0 10px;
+    }
+    .tip-card__desc { font-size: 15px; color: var(--muted); line-height: 1.6; margin: 0; }
+    .tip-card__bad {
+      margin-top: 14px; padding: 10px 12px;
+      background: #FFF3F3; border-radius: 10px;
+      border-left: 3px solid #FF4D4D;
+      font-family: var(--f-mono); font-size: 12px; color: #CC2222; letter-spacing: 0.02em;
+    }
+    .tip-card__good {
+      margin-top: 8px; padding: 10px 12px;
+      background: var(--lime-tint); border-radius: 10px;
+      border-left: 3px solid var(--lime);
+      font-family: var(--f-mono); font-size: 12px; color: #2A7A00; letter-spacing: 0.02em;
+    }
+    .tip-card__bad::before { content: "✕  "; }
+    .tip-card__good::before { content: "✓  "; }
+
+    /* ---- Instagram CTA ---- */
+    .ig-section {
+      padding-block: clamp(64px, 9vw, 112px);
+    }
+    .ig-card {
+      background: var(--ink);
+      border-radius: 24px;
+      padding: clamp(40px, 6vw, 72px);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (max-width: 720px) {
+      .ig-card { grid-template-columns: 1fr; }
+      .ig-card__right { display: none; }
+    }
+    .ig-card::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(81,245,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(81,245,0,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .ig-card::after {
+      content: "";
+      position: absolute; top: -15%; right: 5%;
+      width: 42%; aspect-ratio: 1;
+      background: radial-gradient(circle, rgba(81,245,0,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .ig-card__label {
+      font-family: var(--f-mono); font-size: 11px;
+      letter-spacing: 0.1em; text-transform: lowercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+      position: relative; z-index: 1;
+    }
+    .ig-card__label .dot { width: 5px; height: 5px; border-radius: 999px; background: var(--lime); }
+    .ig-card__title {
+      font-family: var(--f-sans); font-weight: 800;
+      font-size: clamp(24px, 3vw, 38px);
+      letter-spacing: -0.02em; color: #fff;
+      margin: 0 0 12px; line-height: 1.1;
+      position: relative; z-index: 1;
+    }
+    .ig-card__title .italic { font-family: var(--f-serif); font-weight: 400; font-style: italic; color: var(--lime); }
+    .ig-card__desc {
+      font-size: 16px; color: rgba(255,255,255,0.5);
+      max-width: 50ch; margin: 0 0 28px; line-height: 1.6;
+      position: relative; z-index: 1;
+    }
+    .ig-card__cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 18px 28px;
+      background: var(--lime); color: var(--ink);
+      border-radius: var(--r-pill);
+      font-family: var(--f-sans); font-weight: 700;
+      font-size: 15px; letter-spacing: -0.005em;
+      border: 1.5px solid var(--lime);
+      transition: background .25s, box-shadow .25s, transform .25s;
+      position: relative; z-index: 1;
+      white-space: nowrap;
+    }
+    .ig-card__cta:hover {
+      background: #fff; border-color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(255,255,255,0.15);
+    }
+    .ig-card__right {
+      position: relative; z-index: 1;
+    }
+    .ig-handle {
+      font-family: var(--f-sans); font-weight: 800;
+      font-size: clamp(22px, 3vw, 36px);
+      letter-spacing: -0.02em; color: rgba(255,255,255,0.1);
+      white-space: nowrap;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      user-select: none;
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 36px 0;
+    }
+    .footer__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+      font-family: var(--f-mono); font-size: 12px;
+      color: var(--muted); letter-spacing: 0.06em;
+    }
+    .footer a:hover { color: var(--ink); }
+
+    /* ---- Toast ---- */
+    .toast {
+      position: fixed; bottom: 28px; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--ink); color: #fff;
+      font-family: var(--f-mono); font-size: 13px;
+      letter-spacing: 0.04em; padding: 12px 22px;
+      border-radius: var(--r-pill);
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s, transform .3s;
+      z-index: 999;
+      white-space: nowrap;
+    }
+    .toast.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ---- Animations ---- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp .7s cubic-bezier(.2,.7,.2,1) both; }
+    .fade-up--d1 { animation-delay: .1s; }
+    .fade-up--d2 { animation-delay: .2s; }
+    .fade-up--d3 { animation-delay: .3s; }
+    .fade-up--d4 { animation-delay: .4s; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__brand">
+          <span class="glyph">n</span>
+          natalie.kreatywnie
+        </a>
+        <a href="index.html" class="nav__back">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          powrót do strony głównej
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="page-hero__inner">
+        <div class="page-hero__left">
+          <div class="page-hero__eyebrow fade-up">
+            <span class="dot"></span>
+            tutorial · ai photography
+          </div>
+          <h1 class="page-hero__title fade-up fade-up--d1">
+            Jak naprawić <span class="italic">plastikową</span> skórę w AI?
+          </h1>
+          <p class="page-hero__sub fade-up fade-up--d2">
+            Twoje zdjęcia AI wciąż wyglądają zbyt idealnie? Oto jak zatrzymać efekt „plastikowej skóry" — 3 konkretne kroki i gotowe prompty do skopiowania.
+          </p>
+          <div class="page-hero__meta fade-up fade-up--d3">
+            <span class="page-hero__badge"><span class="dot"></span>3 kroki</span>
+            <span class="page-hero__badge"><span class="dot"></span>6 gotowych promptów</span>
+            <span class="page-hero__badge"><span class="dot"></span>Midjourney · DALL·E · SD</span>
+          </div>
+        </div>
+        <div class="page-hero__slides fade-up fade-up--d2">
+          <div class="hero-slide"><img src="skora/skin-1.jpeg" alt="Realistyczna skóra AI" /></div>
+          <div class="hero-slide"><img src="skora/skin-3.jpeg" alt="Realistyczna skóra AI" /></div>
+          <div class="hero-slide"><img src="skora/skin-5.jpeg" alt="Realistyczna skóra AI" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section class="steps-section">
+    <div class="wrap">
+      <div class="steps-section__intro">
+        <div class="section-eyebrow">
+          <span class="dot"></span>
+          metoda w 3 krokach
+        </div>
+        <h2 class="section-title">AI jest wykonawcą — <span class="italic">Ty musisz wskazać, co ma zrobić.</span></h2>
+        <p class="section-desc">Dając jasne instrukcje, dostaniesz „zdjęcie", nie render. Oto jak to zrobić.</p>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="step-card step-card--with-img">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-label">krok 01 / 03</div>
+          <h3 class="step-title">Promptuj niedoskonałość, nie perfekcję.</h3>
+          <p class="step-desc">
+            Nie próbuj tworzyć idealnego piękna. AI domyślnie generuje wygładzone, „idealne" twarze — bo właśnie tego spodziewała się po słowie <em>„beautiful"</em>. Odwróć to założenie i skup się na mankamentach, które budują realizm.
+          </p>
+          <div class="step-tags">
+            <span class="step-tag">visible pores</span>
+            <span class="step-tag">freckles</span>
+            <span class="step-tag">subtle imperfections</span>
+            <span class="step-tag">uneven skin tone</span>
+            <span class="step-tag">natural skin texture</span>
+          </div>
+        </div>
+        <div class="step-card__img">
+          <img src="skora/x1.png" alt="Krok 1 — promptuj niedoskonałość" />
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card step-card--with-img">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-label">krok 02 / 03</div>
+          <h3 class="step-title">Kontroluj parametry techniczne aparatu.</h3>
+          <p class="step-desc">
+            Posługuj się językiem, który AI „rozumie" — podaj konkretny sprzęt fotograficzny. Model interpretuje te informacje jako sygnał „realna fotografia" i generuje obraz z charakterystyką optyczną danego obiektywu i filmu.
+          </p>
+          <div class="step-tags">
+            <span class="step-tag">Canon 85mm f/1.2</span>
+            <span class="step-tag">Nikon D850 f/2.0 ISO 400</span>
+            <span class="step-tag">Fujifilm Pro 400H</span>
+            <span class="step-tag">slight film grain</span>
+            <span class="step-tag">shallow depth of field</span>
+          </div>
+        </div>
+        <div class="step-card__img">
+          <img src="skora/x2.png" alt="Krok 2 — parametry techniczne" />
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card step-card--with-img">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-label">krok 03 / 03</div>
+          <h3 class="step-title">Określ typ ujęcia.</h3>
+          <p class="step-desc">
+            Niejasny prompt da wynik przypadkowy i przeciętny. Nie pozwól AI zgadywać — zaplanowany kadr nie pozostawia miejsca na słabe kompozycje. Im precyzyjniej opiszesz typ fotografii, tym bardziej spójny i zamierzony efekt uzyskasz.
+          </p>
+          <div class="step-tags">
+            <span class="step-tag">portrait</span>
+            <span class="step-tag">close-up</span>
+            <span class="step-tag">half-body</span>
+            <span class="step-tag">full-body</span>
+            <span class="step-tag">headshot</span>
+            <span class="step-tag">candid</span>
+            <span class="step-tag">street photo</span>
+            <span class="step-tag">fashion shoot</span>
+          </div>
+        </div>
+        <div class="step-card__img">
+          <img src="skora/x3.png" alt="Krok 3 — typ ujęcia" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tips -->
+  <section class="tips-section">
+    <div class="wrap">
+      <div class="section-eyebrow">
+        <span class="dot"></span>
+        czego unikać
+      </div>
+      <h2 class="section-title">Słowa, które <span class="italic">zabijają</span> realizm.</h2>
+      <p class="section-desc" style="color: var(--muted); margin-top: 12px;">Zamień te zwroty na ich realistyczne odpowiedniki — różnica jest natychmiastowa.</p>
+
+      <div class="tips-grid">
+        <div class="tip-card">
+          <span class="tip-card__icon">✦</span>
+          <div class="tip-card__title">Skóra i cera</div>
+          <div class="tip-card__desc">„Perfekcja" mówi AI żeby wygładzić wszystko. „Widoczność" buduje realizm.</div>
+          <div class="tip-card__bad">flawless skin / perfect complexion / smooth face</div>
+          <div class="tip-card__good">visible pores / subtle imperfections / natural texture</div>
+        </div>
+        <div class="tip-card">
+          <span class="tip-card__icon">◈</span>
+          <div class="tip-card__title">Oświetlenie</div>
+          <div class="tip-card__desc">Studyjne światło renderuje jak produkt. Filmowe i naturalne — jak człowiek.</div>
+          <div class="tip-card__bad">studio lighting / perfect lighting / dramatic light</div>
+          <div class="tip-card__good">natural window light / soft morning light / film tone</div>
+        </div>
+        <div class="tip-card">
+          <span class="tip-card__icon">◉</span>
+          <div class="tip-card__title">Jakość zdjęcia</div>
+          <div class="tip-card__desc">„Hyper realistic" paradoksalnie daje efekt CGI. Surowe RAW brzmi jak prawdziwa fotografia.</div>
+          <div class="tip-card__bad">hyper realistic / ultra HD / 8K render</div>
+          <div class="tip-card__good">unedited RAW photo / documentary style / candid moment</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prompts -->
+  <section class="prompts-section">
+    <div class="wrap" style="position: relative; z-index: 1;">
+      <div class="section-eyebrow">
+        <span class="dot"></span>
+        biblioteka promptów
+      </div>
+      <h2 class="section-title">Gotowe prompty do <span class="italic">skopiowania.</span></h2>
+      <p class="section-desc">Kliknij „kopiuj" — do schowka trafi pełny prompt razem z parametrami Midjourney.</p>
+
+      <div class="prompts-grid">
+
+        <!-- Prompt 1 -->
+        <div class="prompt-card">
+          <div class="prompt-card__toolbar">
+            <span class="prompt-card__num">prompt 01 · portret editorial</span>
+            <button class="prompt-card__copy" onclick="copyPrompt(this, 1)">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M3 8H2a1 1 0 01-1-1V2a1 1 0 011-1h5a1 1 0 011 1v1" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+              <span>kopiuj</span>
+            </button>
+          </div>
+          <div class="prompt-card__body">
+            <div class="prompt-card__hint"><span class="dot"></span>Midjourney / DALL·E / SD</div>
+            <p class="prompt-card__text">Portrait of a young woman, Canon 85mm f/1.2 lens, DSLR, high-resolution, natural lighting, shallow depth of field, visible pores, realistic skin texture, subtle imperfections, freckles, catchlight in eyes, realistic hair strands, candid moment, unretouched, no watermarks, no blur, editorial fashion photography</p>
+            <div class="prompt-card__mj">
+              <span class="prompt-card__mj-label">Midjourney</span>
+              <span class="prompt-card__mj-params">--ar 2:3 --v 7</span>
+            </div>
+            <div class="prompt-card__result">
+              <img src="skora/skin-1.jpeg" alt="Wynik promptu 01 — portret editorial" loading="lazy" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Prompt 2 -->
+        <div class="prompt-card">
+          <div class="prompt-card__toolbar">
+            <span class="prompt-card__num">prompt 02 · fujifilm film</span>
+            <button class="prompt-card__copy" onclick="copyPrompt(this, 2)">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M3 8H2a1 1 0 01-1-1V2a1 1 0 011-1h5a1 1 0 011 1v1" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+              <span>kopiuj</span>
+            </button>
+          </div>
+          <div class="prompt-card__body">
+            <div class="prompt-card__hint"><span class="dot"></span>Midjourney / DALL·E / SD</div>
+            <p class="prompt-card__text">Candid portrait of a woman in her 30s, natural window light, visible skin texture and pores, slight shine on forehead, minimal makeup, Fujifilm Pro 400H, slight film grain, unedited RAW photo</p>
+            <div class="prompt-card__mj">
+              <span class="prompt-card__mj-label">Midjourney</span>
+              <span class="prompt-card__mj-params">--ar 2:3 --v 7 --stylize 1000</span>
+            </div>
+            <div class="prompt-card__result">
+              <img src="skora/skin-2.jpeg" alt="Wynik promptu 02 — fujifilm film" loading="lazy" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Prompt 3 -->
+        <div class="prompt-card">
+          <div class="prompt-card__toolbar">
+            <span class="prompt-card__num">prompt 03 · ultra realistic</span>
+            <button class="prompt-card__copy" onclick="copyPrompt(this, 3)">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M3 8H2a1 1 0 01-1-1V2a1 1 0 011-1h5a1 1 0 011 1v1" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+              <span>kopiuj</span>
+            </button>
+          </div>
+          <div class="prompt-card__body">
+            <div class="prompt-card__hint"><span class="dot"></span>Midjourney / DALL·E / SD</div>
+            <p class="prompt-card__text">Ultra-realistic portrait of a young woman with brown eyes, Canon 85mm f/1.2 lens, DSLR, high-resolution, natural lighting, shallow depth of field, visible pores, realistic skin texture, subtle imperfections, freckles, catchlight in eyes, realistic hair strands, candid moment, unretouched, no watermarks, no blur, editorial fashion photography</p>
+            <div class="prompt-card__mj">
+              <span class="prompt-card__mj-label">Midjourney</span>
+              <span class="prompt-card__mj-params">--ar 2:3 --v 7</span>
+            </div>
+            <div class="prompt-card__result">
+              <img src="skora/skin-3.jpeg" alt="Wynik promptu 03 — ultra realistic" loading="lazy" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Prompt 4 -->
+        <div class="prompt-card">
+          <div class="prompt-card__toolbar">
+            <span class="prompt-card__num">prompt 04 · no makeup look</span>
+            <button class="prompt-card__copy" onclick="copyPrompt(this, 4)">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M3 8H2a1 1 0 01-1-1V2a1 1 0 011-1h5a1 1 0 011 1v1" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+              <span>kopiuj</span>
+            </button>
+          </div>
+          <div class="prompt-card__body">
+            <div class="prompt-card__hint"><span class="dot"></span>Midjourney / DALL·E / SD</div>
+            <p class="prompt-card__text">No makeup look, daylight portrait, visible pores, light freckles, uneven tone, natural hair texture, warm sunlight through window blinds, soft focus edges, 35mm handheld shot, photojournalistic realism</p>
+            <div class="prompt-card__mj">
+              <span class="prompt-card__mj-label">Midjourney</span>
+              <span class="prompt-card__mj-params">--ar 2:3 --v 7 --stylize 1000</span>
+            </div>
+            <div class="prompt-card__result">
+              <img src="skora/skin-4.jpeg" alt="Wynik promptu 04 — no makeup look" loading="lazy" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Prompt 5 -->
+        <div class="prompt-card">
+          <div class="prompt-card__toolbar">
+            <span class="prompt-card__num">prompt 05 · 3/4 morning light</span>
+            <button class="prompt-card__copy" onclick="copyPrompt(this, 5)">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M3 8H2a1 1 0 01-1-1V2a1 1 0 011-1h5a1 1 0 011 1v1" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+              <span>kopiuj</span>
+            </button>
+          </div>
+          <div class="prompt-card__body">
+            <div class="prompt-card__hint"><span class="dot"></span>Midjourney / DALL·E / SD</div>
+            <p class="prompt-card__text">Portrait 3/4 angle, 50mm lens, soft morning light, neutral background, subtle imperfections, small wrinkles near eyes, natural blush, micro texture on skin, film tone, handheld feel</p>
+            <div class="prompt-card__mj">
+              <span class="prompt-card__mj-label">Midjourney</span>
+              <span class="prompt-card__mj-params">--ar 2:3 --v 7 --stylize 1000</span>
+            </div>
+            <div class="prompt-card__result">
+              <img src="skora/skin-5.jpeg" alt="Wynik promptu 05 — 3/4 morning light" loading="lazy" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Prompt 6 -->
+        <div class="prompt-card">
+          <div class="prompt-card__toolbar">
+            <span class="prompt-card__num">prompt 06 · documentary</span>
+            <button class="prompt-card__copy" onclick="copyPrompt(this, 6)">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M3 8H2a1 1 0 01-1-1V2a1 1 0 011-1h5a1 1 0 011 1v1" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+              <span>kopiuj</span>
+            </button>
+          </div>
+          <div class="prompt-card__body">
+            <div class="prompt-card__hint"><span class="dot"></span>Midjourney / DALL·E / SD</div>
+            <p class="prompt-card__text">Candid portrait of a woman in her 30s, natural window light, visible skin texture and pores, slight shine on forehead, minimal makeup, shot with Canon 5D Mark IV, 85mm lens at f/2.8, ISO 200, slight film grain, unedited RAW photo, documentary style, slightly off-center composition</p>
+            <div class="prompt-card__mj">
+              <span class="prompt-card__mj-label">Midjourney</span>
+              <span class="prompt-card__mj-params">--ar 2:3 --v 7</span>
+            </div>
+            <div class="prompt-card__result">
+              <img src="skora/skin-6.jpeg" alt="Wynik promptu 06 — documentary" loading="lazy" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery — portraits -->
+  <section class="gallery-section">
+    <div class="wrap">
+      <div class="section-eyebrow">
+        <span class="dot"></span>
+        przykładowe efekty
+      </div>
+      <h2 class="section-title" style="margin-bottom: 12px;">Tak wygląda <span class="italic">realistyczna skóra</span> w praktyce.</h2>
+      <p class="section-desc" style="margin-bottom: clamp(40px,5vw,60px);">Wszystkie poniższe obrazy zostały wygenerowane przy użyciu promptów z tej biblioteki.</p>
+
+      <!-- Row 1: o1–o4 -->
+      <div class="gallery-row">
+        <div class="gallery-grid">
+          <div class="gallery-item"><img src="skora/o1.png" alt="Przykład realistycznej skóry 1" loading="lazy" /></div>
+          <div class="gallery-item"><img src="skora/o2.png" alt="Przykład realistycznej skóry 2" loading="lazy" /></div>
+          <div class="gallery-item"><img src="skora/o3.png" alt="Przykład realistycznej skóry 3" loading="lazy" /></div>
+          <div class="gallery-item"><img src="skora/o4.png" alt="Przykład realistycznej skóry 4" loading="lazy" /></div>
+        </div>
+      </div>
+
+      <!-- Row 2: o5–o8 -->
+      <div class="gallery-row">
+        <div class="gallery-grid">
+          <div class="gallery-item"><img src="skora/o5.png" alt="Przykład realistycznej skóry 5" loading="lazy" /></div>
+          <div class="gallery-item"><img src="skora/o6.png" alt="Przykład realistycznej skóry 6" loading="lazy" /></div>
+          <div class="gallery-item"><img src="skora/o7.png" alt="Przykład realistycznej skóry 7" loading="lazy" /></div>
+          <div class="gallery-item"><img src="skora/o8.png" alt="Przykład realistycznej skóry 8" loading="lazy" /></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Instagram CTA -->
+  <section class="ig-section">
+    <div class="wrap">
+      <div class="ig-card">
+        <div class="ig-card__left">
+          <div class="ig-card__label"><span class="dot"></span>więcej na instagramie</div>
+          <h2 class="ig-card__title">Więcej takich porad znajdziesz na <span class="italic">@natalie.kreatywnie</span></h2>
+          <p class="ig-card__desc">Co tydzień nowe techniki promptowania, przewodniki i inspiracje dla kreatywnych twórców AI. Dołącz do społeczności.</p>
+          <a href="https://instagram.com/natalie.kreatywnie" target="_blank" rel="noopener" class="ig-card__cta">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+            </svg>
+            Obserwuj na Instagramie
+          </a>
+        </div>
+        <div class="ig-card__right">
+          <div class="ig-handle">@natalie.kreatywnie</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__inner">
+        <span>© 2025 natalie.kreatywnie</span>
+        <div style="display:flex; gap: 24px;">
+          <a href="index.html">strona główna</a>
+          <a href="https://instagram.com/natalie.kreatywnie" target="_blank">instagram</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">✓ Prompt + parametry skopiowane</div>
+
+  <script>
+    // Full prompts with MJ params — what gets copied
+    const prompts = {
+      1: `Portrait of a young woman, Canon 85mm f/1.2 lens, DSLR, high-resolution, natural lighting, shallow depth of field, visible pores, realistic skin texture, subtle imperfections, freckles, catchlight in eyes, realistic hair strands, candid moment, unretouched, no watermarks, no blur, editorial fashion photography --ar 2:3 --v 7`,
+      2: `Candid portrait of a woman in her 30s, natural window light, visible skin texture and pores, slight shine on forehead, minimal makeup, Fujifilm Pro 400H, slight film grain, unedited RAW photo --ar 2:3 --v 7 --stylize 1000`,
+      3: `Ultra-realistic portrait of a young woman with brown eyes, Canon 85mm f/1.2 lens, DSLR, high-resolution, natural lighting, shallow depth of field, visible pores, realistic skin texture, subtle imperfections, freckles, catchlight in eyes, realistic hair strands, candid moment, unretouched, no watermarks, no blur, editorial fashion photography --ar 2:3 --v 7`,
+      4: `No makeup look, daylight portrait, visible pores, light freckles, uneven tone, natural hair texture, warm sunlight through window blinds, soft focus edges, 35mm handheld shot, photojournalistic realism --ar 2:3 --v 7 --stylize 1000`,
+      5: `Portrait 3/4 angle, 50mm lens, soft morning light, neutral background, subtle imperfections, small wrinkles near eyes, natural blush, micro texture on skin, film tone, handheld feel --ar 2:3 --v 7 --stylize 1000`,
+      6: `Candid portrait of a woman in her 30s, natural window light, visible skin texture and pores, slight shine on forehead, minimal makeup, shot with Canon 5D Mark IV, 85mm lens at f/2.8, ISO 200, slight film grain, unedited RAW photo, documentary style, slightly off-center composition --ar 2:3 --v 7`,
+    };
+
+    function copyPrompt(btn, num) {
+      const text = prompts[num];
+      const span = btn.querySelector('span');
+      const toast = document.getElementById('toast');
+
+      navigator.clipboard.writeText(text).then(() => {
+        btn.classList.add('--copied');
+        span.textContent = 'skopiowano!';
+        toast.classList.add('is-visible');
+        setTimeout(() => {
+          btn.classList.remove('--copied');
+          span.textContent = 'kopiuj';
+          toast.classList.remove('is-visible');
+        }, 2500);
+      }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+        document.body.appendChild(ta);
+        ta.focus(); ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        span.textContent = 'skopiowano!';
+        toast.classList.add('is-visible');
+        setTimeout(() => {
+          span.textContent = 'kopiuj';
+          toast.classList.remove('is-visible');
+        }, 2000);
+      });
+    }
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('is-scrolled', window.scrollY > 10);
+    }, { passive: true });
+  </script>
+</body>
+</html>
