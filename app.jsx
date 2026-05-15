@@ -478,19 +478,19 @@ const CONTACT = [
   {
     platform: "Instagram",
     handle: "@natalie.kreatywnie",
-    desc: "Codzienne treści. Reels, karuzele, kulisy.",
+    desc: "Tutoriale. Porady. Inspiracje.",
     cta: "Obserwuj",
     href: "https://instagram.com/natalie.kreatywnie",
     icon: <Icon.Instagram />,
   },
-  {
-    platform: "LinkedIn",
-    handle: "Natalia Przybylska",
-    desc: "Długie wpisy, projekty, refleksje.",
-    cta: "Zobacz profil",
-    href: "https://www.linkedin.com/in/nat-przybylska/",
-    icon: <Icon.LinkedIn />,
-  },
+  // {
+  //   platform: "LinkedIn",
+  //   handle: "Natalia Przybylska",
+  //   desc: "Bądźmy w kontakcie również tam.",
+  //   cta: "Zobacz profil",
+  //   href: "https://www.linkedin.com/in/nat-przybylska/",
+  //   icon: <Icon.LinkedIn />,
+  // },
   {
     platform: "E-mail",
     handle: "natalie.kreatywnie@gmail.com",
