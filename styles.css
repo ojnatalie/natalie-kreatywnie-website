@@ -779,6 +779,101 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* ============================================================
+   Instagram byline — avatar + label
+   ============================================================ */
+.insta__byline {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.insta__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  object-fit: cover;
+  display: block;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1.5px var(--ink), 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.insta__avatar:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 0 0 1.5px var(--lime), 0 8px 22px rgba(81,245,0,0.25);
+}
+.insta__byline .mono {
+  font-family: var(--f-mono); font-size: 12px;
+  letter-spacing: 0.06em; text-transform: lowercase;
+  color: var(--muted);
+}
+
+/* ============================================================
+   Tutorials Intro — wspólny nagłówek serii sekcji teaserów
+   ============================================================ */
+.tutorials-intro {
+  padding-block: clamp(72px, 9vw, 120px) clamp(16px, 2vw, 28px);
+}
+.tutorials-intro::after {
+  /* override default glow position for intro variant */
+  top: -25%; left: 50%; transform: translateX(-50%);
+  width: 60%;
+}
+.tutorials-intro__inner {
+  position: relative; z-index: 1;
+  max-width: 760px;
+}
+.tutorials-intro__inner .mono {
+  font-family: var(--f-mono); font-size: 12px;
+  letter-spacing: 0.08em; text-transform: lowercase;
+  color: rgba(255,255,255,0.4);
+  display: inline-block; margin-bottom: 14px;
+}
+.tutorials-intro__title {
+  color: #fff;
+  font-size: clamp(40px, 6vw, 76px);
+  letter-spacing: -0.025em;
+  margin: 0 0 20px;
+  line-height: 1;
+}
+.tutorials-intro__title .italic { color: var(--lime); }
+.tutorials-intro__desc {
+  font-size: clamp(16px, 1.4vw, 18px);
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  margin: 0 0 36px;
+  max-width: 62ch;
+}
+.tutorials-intro__chips {
+  display: flex; flex-wrap: wrap;
+  gap: 10px;
+}
+.tutorials-intro__chip {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 18px 10px 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-pill);
+  font-family: var(--f-mono); font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.7);
+  transition: background .25s, border-color .25s, color .25s, transform .25s;
+}
+.tutorials-intro__chip:hover {
+  background: rgba(81,245,0,0.08);
+  border-color: rgba(81,245,0,0.4);
+  color: var(--lime);
+  transform: translateY(-2px);
+}
+.tutorials-intro__chip .num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px;
+  border-radius: 999px;
+  background: var(--lime); color: var(--ink);
+  font-weight: 700; font-size: 11px;
+  font-family: var(--f-sans);
+}
+
+/* ============================================================
    Prompt Teaser Section
    ============================================================ */
 
